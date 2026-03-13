@@ -1,0 +1,10 @@
+.footer {
+    background: var(--color-secondary-dark);
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.footer i {
+    margin-right: 0.5rem;
+}

@@ -1,0 +1,206 @@
+/* Импорты ДО основных стилей */
+@import 'utils/variables.css';
+@import 'utils/animations.css';
+@import 'utils/responsive.css';
+/* Остальные импорты */
+@import 'components/header.css';
+@import 'components/footer.css';
+@import 'components/hero.css';
+@import 'components/buttons.css';
+@import 'components/cards.css';
+@import 'components/slider.css';
+@import 'components/tabs.css';
+@import 'components/accordion.css';
+@import 'components/forms.css';
+@import 'components/about.css';
+
+/* Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main, 'Open Sans', sans-serif);
+    line-height: 1.6;
+    color: var(--color-text, #333);
+}
+
+.container {
+    width: 90%;
+    max-width: var(--container-width, 1200px);
+    margin: 0 auto;
+    padding: 0 var(--container-padding, 20px);
+}
+
+/* Utilities */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    color: var(--color-secondary, #2c3e50);
+}
+
+
+
+/* About Section */
+.about {
+    padding: 4rem 0;
+}
+
+.about h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.about-content {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.about-content img {
+    width: 300px;
+    border-radius: var(--border-radius, 10px);
+    transition: transform var(--transition-normal, 0.5s ease);
+}
+
+.about-content img:hover {
+    transform: scale(1.03);
+}
+
+/* Reviews Section */
+.reviews {
+    padding: 4rem 0;
+    background: var(--color-background-alt, #ecf0f1);
+}
+
+.reviews h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.review-list {
+    display: grid;
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.review {
+    background: var(--color-background, #fff);
+    padding: 1.5rem;
+    border-radius: var(--border-radius, 10px);
+    font-style: italic;
+    box-shadow: var(--shadow-sm, 0 2px 10px rgba(0,0,0,0.1));
+}
+
+.review cite {
+    display: block;
+    margin-top: 1rem;
+    font-weight: bold;
+    text-align: right;
+    color: var(--color-primary, #e67e22);
+}
+
+/* Tour Detail Page */
+.tour-detail {
+    padding: 4rem 0;
+}
+
+.tour-gallery {
+    margin-bottom: 2rem;
+}
+
+.gallery-main img {
+    width: 100%;
+    border-radius: var(--border-radius, 10px);
+    margin-bottom: 1rem;
+}
+
+.gallery-thumbnails {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.gallery-thumbnails img {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: var(--border-radius-small, 5px);
+    cursor: pointer;
+    opacity: 0.6;
+    transition: all var(--transition-fast, 0.3s ease);
+}
+
+.gallery-thumbnails img:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+.gallery-thumbnails img.active {
+    opacity: 1;
+    border: 3px solid var(--color-primary, #e67e22);
+}
+
+.tour-info-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.tour-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: var(--border-radius-small, 5px);
+    margin-bottom: 2rem;
+}
+
+.tour-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.tour-meta i {
+    color: var(--color-primary, #e67e22);
+}
+
+.map {
+    margin: 2rem 0;
+}
+
+.map iframe {
+    width: 100%;
+    height: 450px;
+    border: none;
+    border-radius: var(--border-radius, 10px);
+}
+
+.review-item {
+    background: #f9f9f9;
+    padding: 1rem;
+    border-radius: var(--border-radius-small, 5px);
+    margin-bottom: 1rem;
+}
+
+.review-item cite {
+    display: block;
+    margin-top: 0.5rem;
+    color: #777;
+}
+
+.similar-tours {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid #ddd;
+}
+
+.similar-tours h2 {
+    margin-bottom: 2rem;
+}

@@ -1,0 +1,160 @@
+.faq {
+    margin-top: 2rem;
+}
+
+.faq h3 {
+    margin-bottom: 1.5rem;
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-size: 1.5rem;
+    color: var(--color-secondary, #2c3e50);
+}
+
+.accordion-item {
+    border: 1px solid #e0e0e0;
+    border-radius: var(--border-radius-small, 8px);
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+    background: white;
+    box-shadow: var(--shadow-sm, 0 2px 4px rgba(0,0,0,0.05));
+    transition: box-shadow var(--transition-normal, 0.3s ease);
+}
+
+.accordion-item:hover {
+    box-shadow: var(--shadow-md, 0 4px 8px rgba(0,0,0,0.1));
+}
+
+.accordion-header {
+    width: 100%;
+    text-align: left;
+    padding: 1.25rem 1.5rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f5 100%);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-secondary, #2c3e50);
+    transition: all var(--transition-normal, 0.3s ease);
+    position: relative;
+    overflow: hidden;
+}
+
+.accordion-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-primary-light, #f39c12) 0%, var(--color-primary, #e67e22) 100%);
+    opacity: 0.1;
+    transition: width var(--transition-normal, 0.3s ease);
+    z-index: 1;
+}
+
+.accordion-header:hover::before {
+    width: 100%;
+}
+
+.accordion-header:hover {
+    color: var(--color-primary, #e67e22);
+}
+
+.accordion-header i {
+    color: var(--color-primary, #e67e22);
+    transition: all var(--transition-normal, 0.3s ease);
+    font-size: 1.2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.accordion-header.active {
+    background: linear-gradient(135deg, #f1f3f5 0%, #e9ecef 100%);
+    color: var(--color-primary, #e67e22);
+    border-bottom: 1px solid var(--color-primary-light, #f39c12);
+}
+
+.accordion-header.active i {
+    transform: rotate(180deg);
+    color: var(--color-primary-dark, #d35400);
+}
+
+.accordion-content {
+    max-height: 0;
+    padding: 0 1.5rem;
+    background: white;
+    overflow: hidden;
+    transition: all var(--transition-slow, 0.5s cubic-bezier(0.4, 0, 0.2, 1));
+    color: var(--color-text, #333);
+    line-height: 1.6;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.accordion-content.show {
+    max-height: 500px; /* Достаточно для любого контента */
+    padding: 1rem 1rem 2rem 1rem;;
+    opacity: 1;
+    visibility: visible;
+}
+
+.accordion-content p {
+    margin-bottom: 0.5rem;
+}
+
+.accordion-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Добавляем анимацию появления контента */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.accordion-content.show p {
+    animation: slideDown var(--transition-normal, 0.3s ease) forwards;
+}
+
+/* Стили для списков внутри аккордеона */
+.accordion-content ul,
+.accordion-content ol {
+    padding-left: 1.5rem;
+    margin: 0.5rem 0;
+}
+
+.accordion-content li {
+    margin-bottom: 0.25rem;
+}
+
+/* Стили для ссылок внутри аккордеона */
+.accordion-content a {
+    color: var(--color-primary, #e67e22);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all var(--transition-fast, 0.2s ease);
+}
+
+.accordion-content a:hover {
+    border-bottom-color: var(--color-primary, #e67e22);
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 576px) {
+    .accordion-header {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+    
+    .accordion-content.show {
+        padding: 1rem;
+    }
+}

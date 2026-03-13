@@ -1,0 +1,97 @@
+@media (max-width: 1200px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        max-width: 720px;
+    }
+    
+    .hero .container,
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .tour-info-wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    .booking-sidebar {
+        position: static;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 540px;
+    }
+    
+    .nav a {
+        margin-left: 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .tour-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .header .container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .nav a {
+        margin: 0 0.5rem;
+    }
+    
+    .tab-buttons {
+        flex-wrap: wrap;
+    }
+    
+    .tab-button {
+        flex: 1 1 auto;
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+    
+    .gallery-thumbnails img {
+        width: 70px;
+        height: 50px;
+    }
+}
+/* Скрываем/показываем элементы в зависимости от устройства */
+.mobile-badge {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .desktop-only {
+        display: none;
+    }
+    
+    .mobile-badge {
+        display: inline-flex;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-badge {
+        display: none;
+    }
+}
