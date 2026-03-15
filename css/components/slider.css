@@ -1,45 +1,48 @@
 .slider-container {
     position: relative;
     max-width: 100%;
-    margin: 0 auto;
+    margin: 2rem 0;
     overflow: hidden;
-    padding: 20px 0;
+    padding: 10px 0 30px;
 }
 
 .slider-wrapper {
     display: flex;
-    transition: transform var(--transition-normal);
     gap: 20px;
+    transition: transform 0.5s ease;
 }
 
-.slider-wrapper .card {
+.slider-wrapper .tour-card {
     flex: 0 0 calc(33.333% - 14px);
     min-width: 280px;
-    margin: 0;
 }
 
 .slider-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border: none;
     border-radius: 50%;
-    background: rgba(230, 126, 34, 0.8);
-    color: white;
+    background: white;
+    color: #2c3e50;
     cursor: pointer;
     font-size: 1.2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all var(--transition-fast);
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
     z-index: 10;
+    border: 1px solid rgba(0,0,0,0.05);
 }
 
 .slider-btn:hover {
-    background: var(--color-primary);
+    background: #e67e22;
+    color: white;
     transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 20px rgba(230,126,34,0.3);
 }
 
 .slider-btn.prev {
@@ -53,30 +56,67 @@
 .slider-btn.hidden {
     opacity: 0;
     pointer-events: none;
+    visibility: hidden;
 }
 
 .slider-dots {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     margin-top: 20px;
-    margin-bottom: 10px;
 }
 
 .dot {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     background: #ccc;
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: all 0.3s ease;
 }
 
 .dot:hover {
     background: #999;
+    transform: scale(1.2);
 }
 
 .dot.active {
-    background: var(--color-primary);
-    transform: scale(1.2);
+    background: #e67e22;
+    width: 24px;
+    border-radius: 12px;
+}
+
+/* Адаптив */
+@media (max-width: 992px) {
+    .slider-wrapper .tour-card {
+        flex: 0 0 calc(50% - 10px);
+    }
+}
+
+@media (max-width: 768px) {
+    .slider-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .slider-wrapper .tour-card {
+        flex: 0 0 100%;
+    }
+    
+    .slider-btn {
+        width: 36px;
+        height: 36px;
+        background: rgba(255,255,255,0.9);
+    }
+    
+    .slider-btn.prev {
+        left: 5px;
+    }
+    
+    .slider-btn.next {
+        right: 5px;
+    }
 }

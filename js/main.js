@@ -3,8 +3,12 @@ import { TourPage } from './modules/tourPage.js';
 import { handleFormSubmit, initCSRF } from './modules/formHandler.js';
 import { initSmoothScroll } from './modules/smoothScroll.js';
 import { initParallax } from './modules/parallax.js';
+import { initHeader } from './modules/header.js'; // Новый импорт
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Инициализация хедера
+    initHeader();
+    
     // Инициализация CSRF-токенов
     initCSRF();
     

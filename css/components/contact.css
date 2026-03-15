@@ -1,0 +1,106 @@
+.contact {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #2c3e50 0%, #1a2634 100%);
+    color: white;
+}
+
+.contact h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    color: white;
+    font-family: 'Playfair Display', serif;
+}
+
+.contact h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #f39c12, #e67e22);
+    margin: 1rem auto 0;
+    border-radius: 2px;
+}
+
+.contact form {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.contact input,
+.contact textarea {
+    padding: 1rem 1.2rem;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(5px);
+    color: white;
+    font-size: 1rem;
+    transition: all 0.3s;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.contact input:focus,
+.contact textarea:focus {
+    outline: none;
+    background: rgba(255,255,255,0.15);
+    border-color: #e67e22;
+}
+
+.contact input::placeholder,
+.contact textarea::placeholder {
+    color: rgba(255,255,255,0.5);
+}
+
+.contact .btn {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    align-self: flex-start;
+}
+
+.contact .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(230,126,34,0.3);
+}
+
+.contact .form-message {
+    margin-top: 1rem;
+    color: #f39c12;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* Адаптив для contact */
+@media (max-width: 768px) {
+    .contact {
+        padding: 3rem 0;
+    }
+    
+    .contact h2 {
+        font-size: 2rem;
+    }
+    
+    .contact .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact h2 {
+        font-size: 1.8rem;
+    }
+    
+    .contact form {
+        padding: 0 1rem;
+    }
+}

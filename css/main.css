@@ -2,6 +2,7 @@
 @import 'utils/variables.css';
 @import 'utils/animations.css';
 @import 'utils/responsive.css';
+
 /* Остальные импорты */
 @import 'components/header.css';
 @import 'components/footer.css';
@@ -13,6 +14,8 @@
 @import 'components/accordion.css';
 @import 'components/forms.css';
 @import 'components/about.css';
+@import 'components/contact.css';
+@import 'components/tours.css';
 
 /* Base */
 * {
@@ -25,6 +28,8 @@ body {
     font-family: var(--font-main, 'Open Sans', sans-serif);
     line-height: 1.6;
     color: var(--color-text, #333);
+    padding-top: 50px;
+    overflow-x: hidden;
 }
 
 .container {
@@ -39,8 +44,6 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading, 'Montserrat', sans-serif);
     color: var(--color-secondary, #2c3e50);
 }
-
-
 
 /* About Section */
 .about {
@@ -104,43 +107,12 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Tour Detail Page */
 .tour-detail {
-    padding: 4rem 0;
+    padding: 2rem 0 4rem;
 }
 
-.tour-gallery {
-    margin-bottom: 2rem;
-}
-
-.gallery-main img {
-    width: 100%;
-    border-radius: var(--border-radius, 10px);
-    margin-bottom: 1rem;
-}
-
-.gallery-thumbnails {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-}
-
-.gallery-thumbnails img {
-    width: 150px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: var(--border-radius-small, 5px);
-    cursor: pointer;
-    opacity: 0.6;
-    transition: all var(--transition-fast, 0.3s ease);
-}
-
-.gallery-thumbnails img:hover {
-    opacity: 0.9;
-    transform: scale(1.05);
-}
-
-.gallery-thumbnails img.active {
-    opacity: 1;
-    border: 3px solid var(--color-primary, #e67e22);
+.tour-detail h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .tour-info-wrapper {
@@ -203,4 +175,5 @@ h1, h2, h3, h4, h5, h6 {
 
 .similar-tours h2 {
     margin-bottom: 2rem;
+    font-size: 1.8rem;
 }

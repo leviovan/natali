@@ -8,33 +8,73 @@ export class TourSlider {
         this.nextBtn = document.getElementById(nextBtnId);
         this.dotsContainer = document.getElementById(dotsId);
         
-        if (!this.wrapper) return;
+        if (!this.wrapper) {
+            console.error('Слайдер: wrapper не найден');
+            return;
+        }
         
         this.currentIndex = 0;
-        this.cardsPerView = this.getCardsPerView();
         this.init();
     }
     
     init() {
         this.renderCards();
-        this.cards = this.wrapper.querySelectorAll('.card');
-        this.cardCount = this.cards.length;
-        this.createDots();
-        this.updateSlider();
-        this.bindEvents();
+        // Даем время на отрисовку карточек
+        setTimeout(() => {
+            this.cards = this.wrapper.querySelectorAll('.tour-card');
+            this.cardCount = this.cards.length;
+            
+            if (this.cardCount === 0) {
+                console.error('Слайдер: карточки не найдены');
+                return;
+            }
+            
+            this.cardsPerView = this.getCardsPerView();
+            this.createDots();
+            this.updateSlider();
+            this.bindEvents();
+        }, 100);
     }
     
     renderCards() {
         this.wrapper.innerHTML = toursData.map(tour => `
-            <div class="card" data-id="${tour.id}">
-                <img src="${tour.images[0]}" alt="${tour.title}" loading="lazy">
-                <h3>${tour.title}</h3>
-                <p>${tour.shortDescription}</p>
-                <div class="card-meta">
-                    <span><i class="fas fa-clock"></i> ${tour.duration}ч</span>
-                    <span><i class="fas fa-tag"></i> ${tour.basePrice}₽</span>
+            <div class="tour-card" data-id="${tour.id}">
+                <div class="tour-card__image">
+                    <img 
+                        src="${tour.images[0]}" 
+                        alt="${tour.title}" 
+                        loading="lazy"
+                        onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400?text=${encodeURIComponent(tour.title)}';"
+                    >
+                    <div class="tour-card__price-badge">
+                        ${tour.basePrice}₽ <span>за группу</span>
+                    </div>
                 </div>
-                <a href="tour.html?id=${tour.id}" class="btn-small">Подробнее</a>
+                
+                <div class="tour-card__content">
+                    <h3 class="tour-card__title">${tour.title}</h3>
+                    <p class="tour-card__description">${tour.shortDescription}</p>
+                    
+                    <div class="tour-card__meta">
+                        <div class="tour-card__meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span>${tour.duration} ч</span>
+                        </div>
+                        <div class="tour-card__meta-item">
+                            <i class="fas fa-users"></i>
+                            <span>до ${tour.maxPeople} чел</span>
+                        </div>
+                        <div class="tour-card__meta-item">
+                            <i class="fas fa-signal"></i>
+                            <span>${tour.difficulty}</span>
+                        </div>
+                    </div>
+                    
+                    <a href="tour.html?id=${tour.id}" class="tour-card__btn">
+                        Подробнее
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
             </div>
         `).join('');
     }
@@ -48,38 +88,51 @@ export class TourSlider {
     
     createDots() {
         if (!this.dotsContainer) return;
-        const maxIndex = Math.max(0, this.cardCount - this.cardsPerView);
-        this.dotsContainer.innerHTML = Array.from({ length: maxIndex + 1 }, (_, i) => 
-            `<span class="dot ${i === this.currentIndex ? 'active' : ''}" data-index="${i}"></span>`
-        ).join('');
         
+        const maxIndex = Math.max(0, this.cardCount - this.cardsPerView);
+        let dotsHtml = '';
+        
+        for (let i = 0; i <= maxIndex; i++) {
+            dotsHtml += `<span class="dot ${i === this.currentIndex ? 'active' : ''}" data-index="${i}"></span>`;
+        }
+        
+        this.dotsContainer.innerHTML = dotsHtml;
+        
+        // Добавляем обработчики на точки
         this.dotsContainer.querySelectorAll('.dot').forEach(dot => {
-            dot.addEventListener('click', () => {
-                this.currentIndex = parseInt(dot.dataset.index);
-                this.updateSlider();
+            dot.addEventListener('click', (e) => {
+                const index = parseInt(e.target.dataset.index);
+                if (!isNaN(index)) {
+                    this.currentIndex = index;
+                    this.updateSlider();
+                }
             });
         });
     }
     
     updateSlider() {
-        const card = this.cards[0];
-        if (!card) return;
+        if (!this.cards || this.cards.length === 0) return;
         
+        const card = this.cards[0];
         const cardWidth = card.offsetWidth;
-        const gap = 20;
+        const gap = 20; // Должно совпадать с gap в CSS
         const offset = this.currentIndex * (cardWidth + gap);
+        
         this.wrapper.style.transform = `translateX(-${offset}px)`;
         
+        // Обновляем кнопки
         const maxIndex = this.cardCount - this.cardsPerView;
         if (this.prevBtn) {
-            this.prevBtn.classList.toggle('hidden', this.currentIndex === 0);
+            this.prevBtn.classList.toggle('hidden', this.currentIndex <= 0);
         }
         if (this.nextBtn) {
             this.nextBtn.classList.toggle('hidden', this.currentIndex >= maxIndex);
         }
         
+        // Обновляем точки
         if (this.dotsContainer) {
-            this.dotsContainer.querySelectorAll('.dot').forEach((dot, i) => {
+            const dots = this.dotsContainer.querySelectorAll('.dot');
+            dots.forEach((dot, i) => {
                 dot.classList.toggle('active', i === this.currentIndex);
             });
         }
@@ -107,6 +160,7 @@ export class TourSlider {
         
         window.addEventListener('resize', debounce(() => {
             const newCardsPerView = this.getCardsPerView();
+            
             if (newCardsPerView !== this.cardsPerView) {
                 this.cardsPerView = newCardsPerView;
                 const maxIndex = Math.max(0, this.cardCount - this.cardsPerView);
@@ -114,8 +168,14 @@ export class TourSlider {
                 this.createDots();
                 this.updateSlider();
             } else {
+                // Просто обновляем позицию
                 this.updateSlider();
             }
         }, 150));
+        
+        // Обновляем при загрузке изображений
+        window.addEventListener('load', () => {
+            this.updateSlider();
+        });
     }
 }

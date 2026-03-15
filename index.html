@@ -4,21 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://images.unsplash.com https://via.placeholder.com; frame-src https://www.google.com;">
     <title>Экскурсии с Анной</title>
     <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Open+Sans:wght@300;400;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
-    <header class="header">
+    <header class="header" id="header">
         <div class="container">
             <a href="index.html" class="logo">Анна Гид</a>
-            <nav class="nav">
+
+            <!-- Кнопка мобильного меню -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Навигация -->
+            <nav class="nav" id="nav">
                 <a href="#about">Обо мне</a>
                 <a href="#tours">Экскурсии</a>
                 <a href="#reviews">Отзывы</a>
@@ -26,26 +33,14 @@
             </nav>
         </div>
     </header>
-    <!-- Hero секция -->
+
     <!-- Hero секция -->
     <section class="hero">
-        <div class="floating-element"></div>
-        <div class="floating-element"></div>
-        <div class="floating-element"></div>
-
         <div class="container">
             <div class="hero-content">
-                <div class="hero-badge">
-                    <i class="fas fa-star" style="color: #ffd700; margin-right: 0.5rem;"></i>
-                    Топ-гид 2025 по версии Travelers' Choice
-                </div>
-
-                <h1>
-                    Откройте <span>город</span><br>по-новому
-                </h1>
-
-                <p>Индивидуальные и групповые экскурсии с профессиональным гидом Анной. Погружение в историю, культуру и
-                    тайны города.</p>
+                <div class="hero-badge">Топ-гид 2025</div>
+                <h1>Откройте <span>город</span> по-новому</h1>
+                <p>Индивидуальные и групповые экскурсии с профессиональным гидом Анной</p>
 
                 <div class="hero-stats">
                     <div class="stat-item">
@@ -54,123 +49,83 @@
                     </div>
                     <div class="stat-item">
                         <div class="stat-number">500+</div>
-                        <div class="stat-label">довольных туристов</div>
+                        <div class="stat-label">туристов</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-number">10</div>
-                        <div class="stat-label">уникальных маршрутов</div>
+                        <div class="stat-label">маршрутов</div>
                     </div>
                 </div>
 
-                <a href="#tours" class="btn">
-                    <i class="fas fa-compass" style="margin-right: 0.5rem;"></i>
+                <a href="#tours" class="hero-btn">
                     Выбрать экскурсию
+                    <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
 
             <div class="hero-image">
-                <div class="shape"></div>
-                <div class="shape2"></div>
-
-                <div class="image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1558383331-5193a52aa2c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                        alt="Анна гид">
-                </div>
-
-                <!-- Убираем бейдж отсюда полностью -->
-                <!-- <div class="experience-badge">
-                <span>5+</span>
-                <p>лет вдохновляем</p>
-            </div> -->
+                <img src="/assets/img/hero.jpg" alt="Анна гид">
             </div>
         </div>
     </section>
-    <!-- About секция -->
+
     <section id="about" class="about">
         <div class="container">
-            <h2>Обо мне</h2>
+            <div class="about-image">
+                <img src="/assets/img/hero-on-walk.jpg" alt="Анна на экскурсии">
+            </div>
 
             <div class="about-content">
-                <div class="about-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                        alt="Анна - гид">
+                <div class="about-subtitle">Обо мне</div>
+                <h2>Привет, я <span>Анна</span></h2>
+                <p>Я профессиональный гид с 5-летним опытом. Проведу вас по самым живописным уголкам, расскажу истории,
+                    которые не найти в путеводителях, и покажу город глазами местного жителя.</p>
 
-                    <div class="experience-badge-mini">
-                        <i class="fas fa-certificate"></i>
-                        <span>Сертифицированный гид</span>
+                <div class="about-features">
+                    <div class="feature">
+                        <i class="fas fa-heart"></i>
+                        <div>
+                            <h3>Индивидуальный подход</h3>
+                            <p>Адаптирую маршрут под ваши интересы</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-camera"></i>
+                        <div>
+                            <h3>Помогу с фото</h3>
+                            <p>Лучшие ракурсы в красивых местах</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h3>Гибкий график</h3>
+                            <p>Подберем удобное время</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-users"></i>
+                        <div>
+                            <h3>Группы до 10 чел</h3>
+                            <p>Уютные компании</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="about-text">
-                    <div class="about-subtitle">Привет, я Анна</div>
-
-                    <h3>Превращаю прогулки в незабываемые путешествия</h3>
-
-                    <p>Я профессиональный гид с 5-летним опытом. Проведу вас по самым живописным уголкам, расскажу
-                        истории,
-                        которые не найти в путеводителях, и покажу город глазами местного жителя.</p>
-
-                    <div class="about-features">
-                        <div class="feature-item" style="--delay: 0s">
-                            <div class="feature-icon">
-                                <i class="fas fa-heart"></i>
-                            </div>
-                            <div class="feature-text">
-                                <h4>Индивидуальный подход</h4>
-                                <p>Адаптирую маршрут под ваши интересы</p>
-                            </div>
-                        </div>
-
-                        <div class="feature-item" style="--delay: 0.1s">
-                            <div class="feature-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div class="feature-text">
-                                <h4>Гибкий график</h4>
-                                <p>Подберем удобное время</p>
-                            </div>
-                        </div>
-
-                        <div class="feature-item" style="--delay: 0.2s">
-                            <div class="feature-icon">
-                                <i class="fas fa-camera"></i>
-                            </div>
-                            <div class="feature-text">
-                                <h4>Фотосессия</h4>
-                                <p>Помогу сделать лучшие фото</p>
-                            </div>
-                        </div>
-
-                        <div class="feature-item" style="--delay: 0.3s">
-                            <div class="feature-icon">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <div class="feature-text">
-                                <h4>Группы до 10 чел</h4>
-                                <p>Уютные компании</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="about-cta">
-                        <a href="#contact" class="btn">
-                            <i class="fas fa-calendar-check" style="margin-right: 0.5rem;"></i>
-                            Заказать экскурсию
-                        </a>
-
-                        <div class="signature">
-                            <i class="fas fa-quote-right"
-                                style="color: var(--color-primary); font-size: 2rem; opacity: 0.5;"></i>
-                            <span style="font-style: italic; color: var(--color-text-light);">Ваш гид, Анна</span>
-                        </div>
-                    </div>
+                <div class="about-signature">
+                    <img src="https://via.placeholder.com/150x50?text=Анна" alt="Подпись">
+                    <span>Ваш гид, Анна</span>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Tours секция -->
     <section id="tours" class="tours">
         <div class="container">
-            <h2>Мои экскурсии</h2>
+            <h2 class="section-title">Мои экскурсии</h2>
+            <p class="section-subtitle">Выберите путешествие по душе</p>
+
             <div class="slider-container">
                 <div class="slider-wrapper" id="slider-wrapper"></div>
                 <button class="slider-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
@@ -180,6 +135,7 @@
         </div>
     </section>
 
+    <!-- Reviews секция -->
     <section id="reviews" class="reviews">
         <div class="container">
             <h2>Отзывы</h2>
@@ -196,30 +152,52 @@
         </div>
     </section>
 
+    <!-- Contact секция (форма заявки) -->
     <section id="contact" class="contact">
         <div class="container">
             <h2>Забронировать экскурсию</h2>
             <form id="quick-form">
                 <input type="text" name="name" placeholder="Ваше имя" required>
                 <input type="tel" name="phone" placeholder="Телефон" required>
-                <textarea name="message" placeholder="Ваш вопрос или пожелание" rows="3"></textarea>
-
-                <!-- 👇 ВСТАВЬТЕ ЭТУ СТРОКУ -->
-                <input type="hidden" name="csrf_token" id="csrf_token" value="">
-
-                <button type="submit" class="btn">Отправить</button>
+                <textarea name="message"
+                    placeholder="Ваш вопрос или пожелание (какая экскурсия, дата, количество человек)"
+                    rows="4"></textarea>
+                <button type="submit" class="btn">Отправить заявку</button>
                 <p class="form-message"></p>
             </form>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>© 2026 Анна Гид. Все права защищены.</p>
-            <p>
-                <i class="fas fa-phone"></i> +7 (123) 456-78-90 |
-                <i class="fas fa-envelope"></i> anna@example.com
-            </p>
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Анна Гид</h3>
+                    <p>Индивидуальные и групповые экскурсии по городу</p>
+                </div>
+
+                <div class="footer-contacts">
+                    <h4>Контакты</h4>
+                    <p><i class="fas fa-phone"></i> +7 (123) 456-78-90</p>
+                    <p><i class="fas fa-envelope"></i> anna@example.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> г. Санкт-Петербург</p>
+                </div>
+
+                <div class="footer-social">
+                    <h4>Соцсети</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Анна Гид. Все права защищены.</p>
+            </div>
         </div>
     </footer>
 

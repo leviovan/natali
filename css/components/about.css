@@ -1,312 +1,199 @@
 .about {
-    padding: 6rem 0;
-    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
-    position: relative;
-    overflow: hidden;
+    padding: 4rem 0;
+    background: #f8fafd;
 }
 
-.about::before {
-    content: '';
-    position: absolute;
-    top: -100px;
-    right: -100px;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(230, 126, 34, 0.1) 0%, transparent 70%);
-    border-radius: 50%;
-    animation: float 15s ease-in-out infinite;
-}
-
-.about::after {
-    content: '';
-    position: absolute;
-    bottom: -100px;
-    left: -100px;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
-    border-radius: 50%;
-    animation: float 20s ease-in-out infinite reverse;
-}
-
-.about h2 {
-    text-align: center;
-    margin-bottom: 3rem;
-    font-size: 2.5rem;
-    position: relative;
-    display: inline-block;
-    width: 100%;
-}
-
-.about h2::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--color-primary-light), var(--color-primary));
-    border-radius: 2px;
-}
-
-.about-content {
-    display: flex;
+.about .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: center;
-    position: relative;
-    z-index: 2;
 }
 
-.about-image-wrapper {
-    flex: 1;
+.about-image {
     position: relative;
 }
 
-.about-image-wrapper::before {
+.about-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    display: block;
+}
+
+.about-image::before {
     content: '';
     position: absolute;
     top: -20px;
     left: -20px;
-    width: 100%;
-    height: 100%;
-    border: 4px solid var(--color-primary);
-    border-radius: var(--border-radius, 10px);
-    opacity: 0.3;
+    width: 100px;
+    height: 100px;
+    border-top: 4px solid #e67e22;
+    border-left: 4px solid #e67e22;
+    border-radius: 20px 0 0 0;
     z-index: 1;
-    animation: borderPulse 3s ease-in-out infinite;
 }
 
-.about-image-wrapper::after {
+.about-image::after {
     content: '';
     position: absolute;
     bottom: -20px;
     right: -20px;
-    width: 100%;
-    height: 100%;
-    border: 4px solid var(--color-primary-dark);
-    border-radius: var(--border-radius, 10px);
-    opacity: 0.3;
+    width: 100px;
+    height: 100px;
+    border-bottom: 4px solid #e67e22;
+    border-right: 4px solid #e67e22;
+    border-radius: 0 0 20px 0;
     z-index: 1;
-    animation: borderPulse 3s ease-in-out infinite 1.5s;
 }
 
-.about-image-wrapper img {
-    width: 100%;
-    height: auto;
-    border-radius: var(--border-radius, 10px);
-    position: relative;
-    z-index: 2;
-    transition: all 0.5s ease;
-    box-shadow: var(--shadow-lg, 0 20px 30px rgba(0,0,0,0.15));
-}
-
-.about-image-wrapper:hover img {
-    transform: scale(1.02) translateY(-5px);
-    box-shadow: 0 30px 40px rgba(0,0,0,0.2);
-}
-
-.experience-badge-mini {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: white;
-    padding: 0.75rem 1.25rem;
-    border-radius: 50px;
-    box-shadow: var(--shadow-md, 0 5px 20px rgba(0,0,0,0.15));
+.about-content {
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    z-index: 3;
-    animation: slideInRight 0.5s ease-out;
-}
-
-.experience-badge-mini i {
-    color: var(--color-primary);
-    font-size: 1.2rem;
-}
-
-.experience-badge-mini span {
-    font-weight: bold;
-    color: var(--color-primary);
-}
-
-.about-text {
-    flex: 1;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
 .about-subtitle {
-    color: var(--color-primary);
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
+    color: #e67e22;
+    font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    animation: slideInLeft 0.5s ease-out;
+    font-weight: 600;
 }
 
-.about-text h3 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    color: var(--color-secondary);
+.about h2 {
+    font-size: 2.5rem;
     line-height: 1.3;
-    animation: slideInLeft 0.5s ease-out 0.1s both;
+    color: #2c3e50;
+    font-family: 'Playfair Display', serif;
+    margin: 0;
 }
 
-.about-text p {
-    margin-bottom: 1.5rem;
-    color: var(--color-text-light);
-    font-size: 1.1rem;
+.about h2 span {
+    color: #e67e22;
+}
+
+.about p {
+    color: #5d6d7e;
     line-height: 1.8;
-    animation: fadeIn 0.5s ease-out 0.2s both;
+    margin: 0;
+    font-size: 1rem;
 }
 
 .about-features {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
-    margin: 2rem 0;
+    margin: 1rem 0;
 }
 
-.feature-item {
+.feature {
     display: flex;
-    align-items: center;
     gap: 1rem;
-    padding: 1rem;
-    background: white;
-    border-radius: var(--border-radius-small, 5px);
-    box-shadow: var(--shadow-sm, 0 2px 10px rgba(0,0,0,0.1));
-    transition: all 0.3s ease;
-    animation: slideInUp 0.5s ease-out calc(0.3s + var(--delay, 0s)) both;
+    align-items: flex-start;
 }
 
-.feature-item:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-md, 0 5px 20px rgba(0,0,0,0.15));
-    background: linear-gradient(135deg, white, #f8f9fa);
-}
-
-.feature-icon {
-    width: 50px;
-    height: 50px;
+.feature i {
+    font-size: 1.5rem;
+    color: #e67e22;
+    background: rgba(230,126,34,0.1);
+    padding: 0.8rem;
+    border-radius: 12px;
     min-width: 50px;
-    background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1.2rem;
+    text-align: center;
 }
 
-.feature-text h4 {
+.feature h3 {
     font-size: 1.1rem;
-    margin-bottom: 0.25rem;
-    color: var(--color-secondary);
+    margin: 0 0 0.25rem 0;
+    color: #2c3e50;
 }
 
-.feature-text p {
+.feature p {
     margin: 0;
     font-size: 0.9rem;
-    color: var(--color-text-light);
+    color: #7f8c8d;
+    line-height: 1.4;
 }
 
-.about-cta {
-    margin-top: 2rem;
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-}
-
-.signature {
+.about-signature {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
+    margin-top: 1rem;
 }
 
-.signature img {
-    height: 40px;
+.about-signature img {
+    height: 50px;
     width: auto;
     opacity: 0.7;
 }
 
-@keyframes borderPulse {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.02); }
+.about-signature span {
+    font-style: italic;
+    color: #95a5a6;
+    font-size: 1rem;
 }
 
-@keyframes slideInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideInRight {
-    from {
-        opacity: 0;
-        transform: translateX(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Адаптив */
+/* Адаптив для about */
 @media (max-width: 992px) {
-    .about-content {
-        flex-direction: column;
+    .about .container {
+        grid-template-columns: 1fr;
         gap: 3rem;
     }
     
-    .about-image-wrapper {
+    .about-image {
         max-width: 500px;
         margin: 0 auto;
     }
     
-    .about-text {
+    .about-image::before,
+    .about-image::after {
+        display: none;
+    }
+    
+    .about-content {
         text-align: center;
     }
     
     .about-features {
-        grid-template-columns: 1fr;
-    }
-    
-    .about-cta {
-        justify-content: center;
+        grid-template-columns: repeat(2, 1fr);
+        text-align: left;
     }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
+    .about {
+        padding: 3rem 0;
+    }
+    
     .about h2 {
         font-size: 2rem;
     }
     
-    .about-text h3 {
-        font-size: 1.5rem;
+    .about-features {
+        grid-template-columns: 1fr;
+        gap: 1rem;
     }
     
-    .feature-item {
-        padding: 0.75rem;
-    }
-    
-    .about-cta {
+    .feature {
         flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .feature i {
+        margin-bottom: 0.5rem;
+    }
+    
+    .about-signature {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .about h2 {
+        font-size: 1.8rem;
     }
 }

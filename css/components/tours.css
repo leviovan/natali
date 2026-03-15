@@ -1,0 +1,1040 @@
+/* ========== БАЗОВЫЕ СТИЛИ ========== */
+.tour-detail {
+    padding: 2rem 0 4rem;
+    background: #f8fafd;
+    min-height: 100vh;
+}
+
+.tour-detail .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.tour-detail h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    font-family: 'Playfair Display', serif;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.tour-detail h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #f39c12, #e67e22);
+    border-radius: 2px;
+}
+
+/* ========== ГАЛЕРЕЯ ДЛЯ ДЕСКТОПА (ВЕРТИКАЛЬНАЯ) ========== */
+.tour-gallery-desktop {
+    display: grid;
+    grid-template-columns: 1fr 250px;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    background: white;
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.gallery-main {
+    width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+.gallery-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-main:hover img {
+    transform: scale(1.02);
+}
+
+.gallery-thumbnails {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-height: 500px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.gallery-thumbnails::-webkit-scrollbar {
+    width: 4px;
+}
+
+.gallery-thumbnails::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 4px;
+}
+
+.gallery-thumbnails::-webkit-scrollbar-thumb {
+    background: #e67e22;
+    border-radius: 4px;
+}
+
+.thumbnail-item {
+    width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+    background: #f5f5f5;
+    flex-shrink: 0;
+}
+
+.thumbnail-item:hover {
+    transform: translateX(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.thumbnail-item.active {
+    border-color: #e67e22;
+    box-shadow: 0 5px 15px rgba(230,126,34,0.3);
+}
+
+.thumbnail-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ========== СЛАЙДЕР ДЛЯ ПЛАНШЕТОВ И МОБИЛЬНЫХ ========== */
+.tour-gallery-mobile {
+    display: none;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.mobile-slider-container {
+    position: relative;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.mobile-slider-wrapper {
+    display: flex;
+    transition: transform 0.3s ease;
+}
+
+.mobile-slider-slide {
+    flex: 0 0 100%;
+    aspect-ratio: 4/3;
+    background: #f5f5f5;
+}
+
+.mobile-slider-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.mobile-slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.9);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+}
+
+.mobile-slider-btn:hover {
+    background: #e67e22;
+    color: white;
+}
+
+.mobile-slider-btn.prev {
+    left: 15px;
+}
+
+.mobile-slider-btn.next {
+    right: 15px;
+}
+
+.mobile-slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 1rem;
+}
+
+.mobile-slider-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ccc;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.mobile-slider-dot.active {
+    background: #e67e22;
+    width: 20px;
+    border-radius: 10px;
+}
+
+/* ========== ИНФОРМАЦИЯ ========== */
+.tour-info-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.tour-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 16px;
+    margin-bottom: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.tour-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1rem;
+    color: #5d6d7e;
+}
+
+.tour-meta i {
+    color: #e67e22;
+    font-size: 1.2rem;
+    width: 24px;
+}
+
+/* ========== ТАБЫ ========== */
+.tabs {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+}
+
+.tab-buttons {
+    display: flex;
+    gap: 0.5rem;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.tab-button {
+    background: none;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #7f8c8d;
+    border-radius: 30px;
+    transition: all 0.3s;
+    font-weight: 500;
+}
+
+.tab-button:hover {
+    color: #e67e22;
+    background: rgba(230,126,34,0.1);
+}
+
+.tab-button.active {
+    background: #e67e22;
+    color: white;
+}
+
+.tab-content {
+    display: none;
+    line-height: 1.8;
+    color: #5d6d7e;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* ========== ТАРИФЫ ========== */
+.tariffs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.tariff-card {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid #ecf0f1;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.tariff-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    border-color: #e67e22;
+}
+
+.tariff-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #f39c12, #e67e22);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.tariff-card:hover::before,
+.tariff-card.selected-tariff::before {
+    transform: scaleX(1);
+}
+
+.tariff-card.selected-tariff {
+    border-color: #e67e22;
+    box-shadow: 0 10px 25px rgba(230,126,34,0.2);
+    transform: translateY(-5px);
+}
+
+.tariff-card.selected-tariff .tariff-icon {
+    background: linear-gradient(135deg, #e67e22, #d35400);
+    transform: scale(1.1);
+}
+
+.tariff-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    color: white;
+    font-size: 1.5rem;
+    box-shadow: 0 10px 20px rgba(230,126,34,0.2);
+    transition: all 0.3s ease;
+}
+
+.tariff-card h4 {
+    font-size: 1.2rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.tariff-price {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #e67e22;
+    margin-bottom: 0.5rem;
+}
+
+.tariff-price::after {
+    content: '₽';
+    font-size: 1rem;
+    margin-left: 0.2rem;
+    color: #95a5a6;
+}
+
+.tariff-card p {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.tariff-card .btn-small {
+    background: transparent;
+    color: #e67e22;
+    border: 1px solid #e67e22;
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    cursor: pointer;
+    border-radius: 50px;
+}
+
+.tariff-card .btn-small:hover,
+.tariff-card.selected-tariff .btn-small {
+    background: #e67e22;
+    color: white;
+}
+
+/* ========== КАРТА ========== */
+.map {
+    margin: 2rem 0;
+}
+
+.map iframe {
+    width: 100%;
+    height: 450px;
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* ========== ОТЗЫВЫ ========== */
+.review-item {
+    background: #f8fafd;
+    padding: 1.2rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    border-left: 3px solid #e67e22;
+}
+
+.review-item p {
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+.review-item cite {
+    color: #e67e22;
+    font-style: normal;
+    font-weight: 500;
+}
+
+/* ========== ФОРМА БРОНИРОВАНИЯ ДЛЯ ДЕСКТОПА ========== */
+.booking-sidebar {
+    position: sticky;
+    top: 90px;
+    align-self: start;
+}
+
+.booking-form {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.booking-form h2 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #e67e22;
+    margin: 1rem 0;
+    padding: 1rem 0;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.price span {
+    font-size: 1rem;
+    color: #95a5a6;
+    font-weight: normal;
+    display: block;
+    margin-top: 0.3rem;
+}
+
+.booking-form input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.booking-form input:focus {
+    outline: none;
+    border-color: #e67e22;
+    box-shadow: 0 0 0 3px rgba(230,126,34,0.1);
+}
+
+.total-price {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 1rem 0;
+    padding: 1rem 0;
+    border-top: 1px solid #ecf0f1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#total {
+    color: #e67e22;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.selected-tariff-indicator {
+    font-size: 0.9rem;
+    color: #e67e22;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background: rgba(230,126,34,0.1);
+    border-radius: 8px;
+    text-align: center;
+    border-left: 3px solid #e67e22;
+    animation: slideDown 0.3s ease;
+}
+
+.selected-tariff-indicator strong {
+    font-weight: 600;
+    color: #e67e22;
+}
+
+/* ========== КНОПКА БРОНИРОВАНИЯ ДЛЯ МОБИЛЬНЫХ ========== */
+.mobile-booking-btn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 5px 20px rgba(230,126,34,0.4);
+    transition: all 0.3s;
+}
+
+.mobile-booking-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(230,126,34,0.5);
+}
+
+/* ========== МОДАЛЬНОЕ ОКНО ДЛЯ ФОРМЫ ========== */
+.booking-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+    backdrop-filter: blur(5px);
+}
+
+.booking-modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.booking-modal__content {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: modalSlideUp 0.3s;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.booking-modal .booking-form {
+    width: 100%;
+    padding: 0;
+    box-shadow: none;
+}
+
+.booking-modal .booking-form h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+    text-align: center;
+}
+
+.booking-modal .booking-form .price {
+    font-size: 1.8rem;
+    text-align: center;
+    padding: 0.5rem 0;
+}
+
+.booking-modal .booking-form .price span {
+    font-size: 0.9rem;
+}
+
+.booking-modal .booking-form input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.booking-modal .booking-form .total-price {
+    margin: 1rem 0;
+    padding: 1rem 0;
+}
+
+.booking-modal .booking-form .btn {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+}
+
+.booking-modal__close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #95a5a6;
+    transition: all 0.3s;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.booking-modal__close:hover {
+    color: #e67e22;
+    background: rgba(230,126,34,0.1);
+    transform: rotate(90deg);
+}
+
+@keyframes modalSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========== FAQ ========== */
+.faq {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.faq h3 {
+    font-size: 1.3rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.accordion-item {
+    border: 1px solid #ecf0f1;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+}
+
+.accordion-header {
+    width: 100%;
+    text-align: left;
+    padding: 1rem 1.2rem;
+    background: #f8fafd;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #2c3e50;
+    transition: all 0.3s;
+}
+
+.accordion-header:hover {
+    background: #ecf0f1;
+}
+
+.accordion-header i {
+    transition: transform 0.3s;
+}
+
+.accordion-header.active i {
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    padding: 0 1.2rem;
+    background: white;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.accordion-content.show {
+    max-height: 200px;
+    padding: 1rem 1.2rem;
+}
+
+/* ========== ПОХОЖИЕ ТУРЫ ========== */
+.similar-tours {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 2px solid #ecf0f1;
+}
+
+.similar-tours h2 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.similar-tours .tour-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.similar-tours .tour-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+}
+
+.similar-tours .tour-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.similar-tours .tour-card__image {
+    position: relative;
+    padding-top: 66.67%;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+.similar-tours .tour-card__image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.similar-tours .tour-card:hover .tour-card__image img {
+    transform: scale(1.05);
+}
+
+.similar-tours .tour-card__price-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #e67e22;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    z-index: 2;
+}
+
+.similar-tours .tour-card__content {
+    padding: 1rem;
+}
+
+.similar-tours .tour-card__title {
+    font-size: 1.1rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.similar-tours .tour-card__meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+    font-size: 0.85rem;
+    color: #7f8c8d;
+}
+
+.similar-tours .tour-card__meta i {
+    color: #e67e22;
+    margin-right: 0.3rem;
+}
+
+.similar-tours .tour-card__btn {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: #f39c12;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+}
+
+.similar-tours .tour-card__btn:hover {
+    background: #e67e22;
+    transform: translateX(5px);
+}
+
+/* ========== АНИМАЦИИ ========== */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========== АДАПТИВНОСТЬ ========== */
+
+/* Планшеты 768px - 1024px */
+@media (max-width: 1024px) {
+    .tour-gallery-desktop {
+        display: none;
+    }
+    
+    .tour-gallery-mobile {
+        display: block;
+    }
+    
+    .booking-sidebar {
+        display: none;
+    }
+    
+    .mobile-booking-btn {
+        display: block;
+    }
+    
+    /* РАСТЯГИВАЕМ НА ВСЮ ШИРИНУ */
+    .tour-info-wrapper {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+    }
+    
+    .tour-details {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    .tour-details .tabs,
+    .tour-details .faq,
+    .tour-details .tour-meta {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    .tour-detail h1 {
+        font-size: 2rem;
+    }
+    
+    .similar-tours .tour-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .map iframe {
+        height: 350px;
+    }
+}
+
+/* Мобильные 576px - 768px */
+@media (max-width: 768px) {
+    .tour-detail {
+        padding: 1rem 0 5rem;
+    }
+    
+    .tour-detail h1 {
+        font-size: 1.8rem;
+    }
+    
+    .tour-details {
+        width: 100% !important;
+    }
+    
+    .tour-meta {
+        flex-direction: column;
+        gap: 0.8rem;
+        padding: 1rem;
+        width: 100% !important;
+    }
+    
+    .tab-buttons {
+        gap: 0.3rem;
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .tab-button {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+        flex: 1 1 auto;
+    }
+    
+    .tariffs-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .tariff-card {
+        padding: 1.2rem;
+    }
+    
+    .tariff-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+    
+    .tariff-price {
+        font-size: 1.5rem;
+    }
+    
+    .mobile-slider-btn {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .mobile-slider-btn.prev {
+        left: 10px;
+    }
+    
+    .mobile-slider-btn.next {
+        right: 10px;
+    }
+    
+    .similar-tours h2 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    
+    .map iframe {
+        width: 100%;
+        height: 300px;
+    }
+}
+
+/* Маленькие мобильные до 576px */
+@media (max-width: 576px) {
+    .tour-detail h1 {
+        font-size: 1.5rem;
+    }
+    
+    .mobile-slider-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 0.8rem;
+    }
+    
+    .tab-buttons {
+        flex-wrap: wrap;
+    }
+    
+    .tab-button {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.8rem;
+        flex: 1 1 calc(50% - 0.3rem);
+    }
+    
+    .tariff-card {
+        padding: 1rem;
+    }
+    
+    .tariff-card h4 {
+        font-size: 1rem;
+    }
+    
+    .tariff-price {
+        font-size: 1.3rem;
+    }
+    
+    .map iframe {
+        height: 250px;
+    }
+    
+    .similar-tours .tour-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .booking-modal__content {
+        padding: 1.5rem;
+        width: 95%;
+    }
+    
+    .booking-modal .booking-form {
+        width: 100%;
+        padding: 1rem;
+    }
+}
+
+/* Очень маленькие до 380px */
+@media (max-width: 380px) {
+    .tour-detail h1 {
+        font-size: 1.3rem;
+    }
+    
+    .tab-button {
+        padding: 0.3rem 0.4rem;
+        font-size: 0.7rem;
+    }
+    
+    .tariff-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .map iframe {
+        height: 200px;
+    }
+}

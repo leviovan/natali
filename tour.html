@@ -1,38 +1,95 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://images.unsplash.com https://via.placeholder.com; frame-src https://www.google.com;">
     <title>Экскурсия - Анна Гид</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
- <header class="header">
-    <div class="container">
-        <a href="index.html" class="logo">Анна Гид</a>
-        <nav class="nav">
-            <a href="index.html#about">Обо мне</a>
-            <a href="index.html#tours">Экскурсии</a>
-            <a href="index.html#reviews">Отзывы</a>
-            <a href="index.html#contact">Контакты</a>
-        </nav>
-    </div>
-</header>
+    <header class="header" id="header">
+        <div class="container">
+            <a href="index.html" class="logo">Анна Гид</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="nav" id="nav">
+                <a href="index.html#about">Обо мне</a>
+                <a href="index.html#tours">Экскурсии</a>
+                <a href="index.html#reviews">Отзывы</a>
+                <a href="index.html#contact">Контакты</a>
+            </nav>
+        </div>
+    </header>
 
     <section class="tour-detail" id="tour-detail">
         <div class="container">
             <h1 id="tour-title"></h1>
 
-            <div class="tour-gallery" id="tour-gallery">
+            <!-- Десктопная галерея (вертикальная) -->
+            <div class="tour-gallery-desktop" id="desktopGallery">
                 <div class="gallery-main">
-                    <img id="main-image" src="" alt="Основное фото">
+                    <img id="main-image-desktop" src="" alt="Основное фото">
                 </div>
-                <div class="gallery-thumbnails" id="thumbnails"></div>
+                <div class="gallery-thumbnails" id="thumbnails-desktop"></div>
             </div>
 
+            <!-- Мобильная галерея (слайдер) -->
+            <div class="tour-gallery-mobile" id="mobileGallery">
+                <div class="mobile-slider-container">
+                    <div class="mobile-slider-wrapper" id="mobileSliderWrapper"></div>
+                    <button class="mobile-slider-btn prev" id="mobileSliderPrev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="mobile-slider-btn next" id="mobileSliderNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="mobile-slider-dots" id="mobileSliderDots"></div>
+            </div>
+
+            <!-- Кнопка бронирования для мобильных -->
+            <button class="mobile-booking-btn" id="mobileBookingBtn">
+                <i class="fas fa-calendar-check" style="margin-right: 0.5rem;"></i>
+                Забронировать экскурсию
+            </button>
+
+            <!-- Модальное окно с формой бронирования -->
+            <div class="booking-modal" id="bookingModal">
+                <div class="booking-modal__content">
+                    <button class="booking-modal__close" id="closeModalBtn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <div class="booking-form">
+                        <h2>Забронировать</h2>
+                        <p class="price" id="tour-price-mobile"><span></span></p>
+                        <form id="tour-form-mobile">
+                            <input type="hidden" name="tour" id="tour-name-hidden-mobile" value="">
+                            <input type="text" name="name" placeholder="Ваше имя" required>
+                            <input type="tel" name="phone" placeholder="Телефон" required>
+                            <input type="date" name="date" required>
+                            <input type="number" name="people" id="people-input-mobile" placeholder="Количество человек"
+                                min="1" value="1" required>
+                            <input type="hidden" name="csrf_token" id="csrf_token_mobile" value="">
+                            <div class="total-price">
+                                Итого: <span id="total-mobile">0</span> ₽
+                            </div>
+                            <button type="submit" class="btn">Забронировать</button>
+                            <p class="form-message"></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Основная информация -->
             <div class="tour-info-wrapper">
                 <div class="tour-details">
                     <div class="tour-meta" id="tour-meta"></div>
@@ -40,10 +97,12 @@
                     <div class="tabs">
                         <div class="tab-buttons">
                             <button class="tab-button active" data-tab="description">Описание</button>
+                            <button class="tab-button" data-tab="tariffs">Тарифы</button>
                             <button class="tab-button" data-tab="route">Маршрут</button>
                             <button class="tab-button" data-tab="reviews">Отзывы</button>
                         </div>
                         <div class="tab-content active" id="description"></div>
+                        <div class="tab-content" id="tariffs"></div>
                         <div class="tab-content" id="route"></div>
                         <div class="tab-content" id="reviews"></div>
                     </div>
@@ -51,13 +110,15 @@
                     <div class="faq">
                         <h3>Часто задаваемые вопросы</h3>
                         <div class="accordion-item">
-                            <button class="accordion-header">Что взять с собой? <i class="fas fa-chevron-down"></i></button>
+                            <button class="accordion-header">Что взять с собой? <i
+                                    class="fas fa-chevron-down"></i></button>
                             <div class="accordion-content">
                                 <p>Удобную обувь, воду, фотоаппарат. В дождь зонт или дождевик.</p>
                             </div>
                         </div>
                         <div class="accordion-item">
-                            <button class="accordion-header">Можно ли с детьми? <i class="fas fa-chevron-down"></i></button>
+                            <button class="accordion-header">Можно ли с детьми? <i
+                                    class="fas fa-chevron-down"></i></button>
                             <div class="accordion-content">
                                 <p>Да, экскурсия подходит для детей от 7 лет.</p>
                             </div>
@@ -71,26 +132,25 @@
                     </div>
                 </div>
 
-                <div class="booking-sidebar">
+                <!-- Десктопная форма бронирования -->
+                <div class="booking-sidebar" id="desktopBooking">
                     <div class="booking-form">
                         <h2>Забронировать</h2>
                         <p class="price" id="tour-price"><span></span></p>
-                       <form id="tour-form">
-    <input type="hidden" name="tour" id="tour-name-hidden" value="">
-    <input type="text" name="name" placeholder="Ваше имя" required>
-    <input type="tel" name="phone" placeholder="Телефон" required>
-    <input type="date" name="date" required>
-    <input type="number" name="people" id="people-input" placeholder="Количество человек" min="1" value="1" required>
-    
-    <!-- 👇 ВСТАВЬТЕ ЭТУ СТРОКУ -->
-    <input type="hidden" name="csrf_token" id="csrf_token" value="">
-    
-    <div class="total-price">
-        Итого: <span id="total">0</span> ₽
-    </div>
-    <button type="submit" class="btn">Забронировать</button>
-    <p class="form-message"></p>
-</form>
+                        <form id="tour-form">
+                            <input type="hidden" name="tour" id="tour-name-hidden" value="">
+                            <input type="text" name="name" placeholder="Ваше имя" required>
+                            <input type="tel" name="phone" placeholder="Телефон" required>
+                            <input type="date" name="date" required>
+                            <input type="number" name="people" id="people-input" placeholder="Количество человек"
+                                min="1" value="1" required>
+                            <input type="hidden" name="csrf_token" id="csrf_token" value="">
+                            <div class="total-price">
+                                Итого: <span id="total">0</span> ₽
+                            </div>
+                            <button type="submit" class="btn">Забронировать</button>
+                            <p class="form-message"></p>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -104,14 +164,37 @@
 
     <footer class="footer">
         <div class="container">
-            <p>© 2026 Анна Гид. Все права защищены.</p>
-            <p>
-                <i class="fas fa-phone"></i> +7 (123) 456-78-90 | 
-                <i class="fas fa-envelope"></i> anna@example.com
-            </p>
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Анна Гид</h3>
+                    <p>Индивидуальные и групповые экскурсии по городу</p>
+                </div>
+
+                <div class="footer-contacts">
+                    <h4>Контакты</h4>
+                    <p><i class="fas fa-phone"></i> +7 (123) 456-78-90</p>
+                    <p><i class="fas fa-envelope"></i> anna@example.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> г. Санкт-Петербург</p>
+                </div>
+
+                <div class="footer-social">
+                    <h4>Соцсети</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Анна Гид. Все права защищены.</p>
+            </div>
         </div>
     </footer>
 
     <script type="module" src="js/main.js"></script>
 </body>
+
 </html>
