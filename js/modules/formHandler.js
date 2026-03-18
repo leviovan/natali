@@ -26,7 +26,7 @@ export async function handleFormSubmit(e) {
 
     try {
         // Отправляем на сервер
-        const response = await fetch('/netlify/functions/sendMessage', {
+        const response = await fetch('/.netlify/functions/sendMessage', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
