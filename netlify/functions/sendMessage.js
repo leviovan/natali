@@ -1,7 +1,7 @@
 // netlify/functions/sendMessage.js
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
-exports.handler = async (event) => {
+export const handler = async (event) => {
     // Разрешаем только POST запросы
     if (event.httpMethod !== 'POST') {
         return {
