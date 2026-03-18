@@ -269,7 +269,7 @@ async function handleFormSubmit(e) {
     const messageEl = form.querySelector('.form-message');
 
     // Укажите ваш endpoint (для Netlify или другой платформы)
-    const endpoint = '/.netlify/functions/sendMessage';
+    const endpoint = '/netlify/functions/sendMessage';
 
     try {
         const response = await fetch(endpoint, {
