@@ -5,93 +5,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- ОСНОВНЫЕ SEO ТЕГИ -->
+    <!-- SEO Мета-теги -->
     <title>Экскурсии по Санкт-Петербургу с гидом Анной | Индивидуальные и групповые</title>
     <meta name="description"
-        content="Индивидуальные и групповые экскурсии по Санкт-Петербургу с профессиональным гидом Анной. Исторический центр, мистические места, водные прогулки. Более 5 лет опыта, 500+ довольных туристов.">
+        content="Индивидуальные и групповые экскурсии по Санкт-Петербургу с профессиональным гидом Анной. Исторический центр, мистические места, водные прогулки. Более 5 лет опыта.">
     <meta name="keywords"
-        content="экскурсии Санкт-Петербург, гид по Петербургу, индивидуальные экскурсии, групповые экскурсии, обзорные экскурсии, мистический Петербург, водные прогулки">
+        content="экскурсии Санкт-Петербург, гид по Петербургу, индивидуальные экскурсии, обзорные экскурсии">
     <meta name="author" content="Анна Гид">
     <meta name="robots" content="index, follow">
 
-    <!-- OPEN GRAPH (для соцсетей) -->
+    <!-- Open Graph для соцсетей -->
     <meta property="og:title" content="Экскурсии по Санкт-Петербургу с гидом Анной">
-    <meta property="og:description"
-        content="Индивидуальные и групповые экскурсии по Петербургу. Исторический центр, мистические места, водные прогулки.">
-    <meta property="og:image" content="https://ваш-сайт.netlify.app/images/og-preview.jpg">
-    <meta property="og:url" content="https://ваш-сайт.netlify.app">
+    <meta property="og:description" content="Индивидуальные и групповые экскурсии по Петербургу">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ваш-сайт.ru">
+    <meta property="og:image" content="https://ваш-сайт.ru/images/og-preview.jpg">
 
-    <!-- CANONICAL (главная страница) -->
-    <link rel="canonical" href="https://ваш-сайт.netlify.app/">
-
-    <!-- HREFLANG (языковые версии) -->
-    <link rel="alternate" hreflang="ru" href="https://ваш-сайт.netlify.app/">
-
-    <!-- ФАВИКОНКИ -->
+    <!-- Фавиконки -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-    <!-- Шрифты (оптимизировано) -->
+    <!-- Preconnect для внешних ресурсов -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://unpkg.com">
+
+    <!-- Шрифты с font-display: swap (текст виден сразу) -->
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
-    <!-- Font Awesome -->
+    <!-- Font Awesome (обычная загрузка, но с preconnect) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    <!-- Наши стили -->
+    <!-- Наши стили (ОБЫЧНАЯ ЗАГРУЗКА - чтобы слайдер работал) -->
     <link rel="stylesheet" href="css/main.css">
 
-    <!-- AOS -->
+    <!-- AOS стили -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <!-- Структурированные данные (JSON-LD) -->
+    <!-- Структурированные данные -->
     <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": "Экскурсии с Анной",
-            "description": "Индивидуальные и групповые экскурсии по Санкт-Петербургу",
-            "url": "https://ваш-сайт.netlify.app",
-            "telephone": "+7-123-456-78-90",
-            "email": "anna@example.com",
-            "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Санкт-Петербург",
-                "addressCountry": "RU"
-            },
-            "priceRange": "от 2800₽",
-            "openingHours": "Mo-Su 09:00-21:00",
-            "sameAs": [
-                "https://t.me/anna_guide",
-                "https://vk.com/anna_guide",
-                "https://instagram.com/anna_guide"
-            ],
-            "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": "5",
-                "reviewCount": "50"
-            }
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Экскурсии с Анной",
+        "description": "Индивидуальные и групповые экскурсии по Санкт-Петербургу",
+        "url": "https://ваш-сайт.ru",
+        "telephone": "+7-123-456-78-90",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Санкт-Петербург",
+            "addressCountry": "RU"
         }
-        </script>
+    }
+    </script>
 </head>
 
 <body>
     <header class="header" id="header">
         <div class="container">
-            <a href="index.html" class="logo">Натали Гид</a>
-
-            <!-- Кнопка мобильного меню -->
+            <a href="index.html" class="logo">Анна Гид</a>
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-
-            <!-- Навигация -->
             <nav class="nav" id="nav">
                 <a href="#about">Обо мне</a>
                 <a href="#tours">Экскурсии</a>
@@ -104,10 +84,10 @@
     <!-- Hero секция -->
     <section class="hero">
         <div class="container">
-            <div class="hero-content">
+            <div class="hero-content" data-aos="fade-up">
                 <div class="hero-badge">Топ-гид 2025</div>
                 <h1>Откройте <span>город</span> по-новому</h1>
-                <p>Индивидуальные и групповые экскурсии с профессиональным гидом Натали</p>
+                <p>Индивидуальные и групповые экскурсии с профессиональным гидом Анной</p>
 
                 <div class="hero-stats">
                     <div class="stat-item">
@@ -130,24 +110,24 @@
                 </a>
             </div>
 
-            <div class="hero-image">
-                <img src="/assets/img/hero.webp" alt="Натали гид">
+            <div class="hero-image" data-aos="fade-left" data-aos-delay="200">
+                <img src="/assets//img/hero.webp" alt="Анна гид" loading="eager" fetchpriority="high">
             </div>
         </div>
     </section>
 
+    <!-- About секция -->
     <section id="about" class="about">
         <div class="container">
-            <div class="about-image">
-                <img src="/assets/img/hero-on-walk.webp" alt="Натали на экскурсии">
+            <div class="about-image" data-aos="fade-right">
+                <img src="/assets//img/hero-on-walk.webp" alt="Анна на экскурсии" loading="lazy">
             </div>
 
-            <div class="about-content">
+            <div class="about-content" data-aos="fade-left" data-aos-delay="200">
                 <div class="about-subtitle">Обо мне</div>
-                <h2>Привет, я <span>Натали</span></h2>
-                <p>Я - Николаенко Наталья, профессиональный и лицензированный экскурсовод по Санкт-Петербургу и
-                    Ленинградской области.
-                    Экскурсовод с высшим историческим образованием, историк, преподаватель истории.</p>
+                <h2>Привет, я <span>Анна</span></h2>
+                <p>Я профессиональный гид с 5-летним опытом. Проведу вас по самым живописным уголкам, расскажу истории,
+                    которые не найти в путеводителях, и покажу город глазами местного жителя.</p>
 
                 <div class="about-features">
                     <div class="feature">
@@ -181,14 +161,13 @@
                 </div>
 
             </div>
+        </div>
     </section>
 
-    <!-- Tours секция -->
+    <!-- Tours секция (СЛАЙДЕР) -->
     <section id="tours" class="tours">
         <div class="container">
-            <h2 class="section-title">Мои экскурсии</h2>
-            <p class="section-subtitle">Выберите путешествие по душе</p>
-
+            <h2 data-aos="fade-up">Мои экскурсии</h2>
             <div class="slider-container">
                 <div class="slider-wrapper" id="slider-wrapper"></div>
                 <button class="slider-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
@@ -201,30 +180,28 @@
     <!-- Reviews секция -->
     <section id="reviews" class="reviews">
         <div class="container">
-            <h2>Отзывы</h2>
+            <h2 data-aos="fade-up">Отзывы</h2>
             <div class="review-list">
-                <div class="review">
-                    <p>«Натали – лучший гид! Было очень интересно, узнали много нового. Обязательно вернёмся!»</p>
+                <div class="review" data-aos="fade-up" data-aos-delay="100">
+                    <p>«Анна – лучший гид! Было очень интересно, узнали много нового. Обязательно вернёмся!»</p>
                     <cite>— Екатерина</cite>
                 </div>
-                <div class="review">
-                    <p>«Экскурсия с Натали оставила незабываемые впечатления. Очень душевно и познавательно.»</p>
+                <div class="review" data-aos="fade-up" data-aos-delay="200">
+                    <p>«Экскурсия с Анной оставила незабываемые впечатления. Очень душевно и познавательно.»</p>
                     <cite>— Дмитрий</cite>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact секция (форма заявки) -->
+    <!-- Contact секция -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2>Забронировать экскурсию</h2>
-            <form id="quick-form">
+            <h2 data-aos="fade-up">Забронировать экскурсию</h2>
+            <form id="quick-form" data-aos="fade-up" data-aos-delay="200">
                 <input type="text" name="name" placeholder="Ваше имя" required>
                 <input type="tel" name="phone" placeholder="Телефон" required>
-                <textarea name="message"
-                    placeholder="Ваш вопрос или пожелание (какая экскурсия, дата, количество человек)"
-                    rows="4"></textarea>
+                <textarea name="message" placeholder="Ваш вопрос или пожелание" rows="4"></textarea>
                 <button type="submit" class="btn">Отправить заявку</button>
                 <p class="form-message"></p>
             </form>
@@ -236,37 +213,45 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-info">
-                    <h3>Натали Гид</h3>
+                    <h3>Анна Гид</h3>
                     <p>Индивидуальные и групповые экскурсии по городу</p>
                 </div>
 
                 <div class="footer-contacts">
                     <h4>Контакты</h4>
-                    <p><i class="fas fa-phone"></i> +7 (906) 271-08-45 </p>
-                    <p><i class="fas fa-envelope"></i> nikolaenko1311@mail.ru</p>
+                    <p><i class="fas fa-phone"></i> +7 (123) 456-78-90</p>
+                    <p><i class="fas fa-envelope"></i> anna@example.com</p>
                     <p><i class="fas fa-map-marker-alt"></i> г. Санкт-Петербург</p>
                 </div>
 
                 <div class="footer-social">
                     <h4>Соцсети</h4>
                     <div class="social-links">
-                        <a href="https://t.me/nikolaenkonatalia_guidespb" target="_blank"><i
-                                class="fab fa-telegram"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://www.instagram.com/reel/DVnUMvhDNlo/?igsh=MXN3NDJjZnQ0bjNwcg=="
-                            target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://vk.ru/wall-207824461_157" target="_blank"><i class="fab fa-vk"></i></a>
+                        <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="VK"><i class="fab fa-vk"></i></a>
                     </div>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>© 2026 Натали Гид. Все права защищены.</p>
+                <p>© 2026 Анна Гид. Все права защищены.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Скрипты (в конце тела) -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script type="module" src="js/main.js"></script>
+    <script>
+        // Инициализация AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 50
+        });
+    </script>
 </body>
 
 </html>

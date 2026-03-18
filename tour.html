@@ -2,36 +2,40 @@
 <html lang="ru">
 
 <head>
-
-
-
-    <!-- ОСНОВНЫЕ SEO ТЕГИ (динамические) -->
-    <title id="seo-title">Экскурсия | Анна Гид</title>
-    <meta name="description" id="seo-description" content="Экскурсия по Санкт-Петербургу с гидом Анной">
-    <meta name="keywords" content="экскурсия, гид, Санкт-Петербург">
-
-    <!-- OPEN GRAPH (динамические) -->
-    <meta property="og:title" id="og-title" content="Экскурсия">
-    <meta property="og:description" id="og-description" content="Экскурсия по Санкт-Петербургу">
-    <meta property="og:image" id="og-image" content="">
-    <meta property="og:url" content="https://ваш-сайт.netlify.app/tour.html">
-
-    <!-- CANONICAL (динамический) -->
-    <link rel="canonical" id="canonical" href="https://ваш-сайт.netlify.app/tour.html">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- SEO теги (будут обновлены скриптом) -->
+    <title id="seo-title">Экскурсия | Анна Гид</title>
+    <meta name="description" id="seo-description" content="Индивидуальная экскурсия по Санкт-Петербургу с гидом Анной">
+
+    <!-- Open Graph -->
+    <meta property="og:title" id="og-title" content="Экскурсия">
+    <meta property="og:description" id="og-description" content="Экскурсия по Санкт-Петербургу">
+    <meta property="og:image" id="og-image" content="">
+    <meta property="og:url" content="https://ваш-сайт.ru/tour.html">
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- Шрифты -->
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
         rel="stylesheet">
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Наши стили -->
     <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
     <header class="header" id="header">
         <div class="container">
-            <a href="index.html" class="logo">Натали Гид</a>
+            <a href="index.html" class="logo">Анна Гид</a>
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <span></span>
                 <span></span>
@@ -50,7 +54,7 @@
         <div class="container">
             <h1 id="tour-title"></h1>
 
-            <!-- Десктопная галерея (вертикальная) -->
+            <!-- Десктопная галерея -->
             <div class="tour-gallery-desktop" id="desktopGallery">
                 <div class="gallery-main">
                     <img id="main-image-desktop" src="" alt="Основное фото">
@@ -78,7 +82,7 @@
                 Забронировать экскурсию
             </button>
 
-            <!-- Модальное окно с формой бронирования -->
+            <!-- Мобильная форма (в модальном окне) -->
             <div class="booking-modal" id="bookingModal">
                 <div class="booking-modal__content">
                     <button class="booking-modal__close" id="closeModalBtn">
@@ -94,7 +98,6 @@
                             <input type="date" name="date" required>
                             <input type="number" name="people" id="people-input-mobile" placeholder="Количество человек"
                                 min="1" value="1" required>
-                            <input type="hidden" name="csrf_token" id="csrf_token_mobile" value="">
                             <button type="submit" class="btn">Забронировать</button>
                             <p class="form-message"></p>
                         </form>
@@ -102,12 +105,11 @@
                 </div>
             </div>
 
-            <!-- Основная информация -->
+            <!-- Информация о туре -->
             <div class="tour-info-wrapper">
                 <div class="tour-details">
                     <div class="tour-meta" id="tour-meta"></div>
 
-                    <!-- Табы (убрали вкладку "Маршрут") -->
                     <div class="tabs">
                         <div class="tab-buttons">
                             <button class="tab-button active" data-tab="description">Описание</button>
@@ -119,7 +121,6 @@
                         <div class="tab-content" id="reviews"></div>
                     </div>
 
-                    <!-- FAQ (аккордеон) -->
                     <div class="faq">
                         <h3>Часто задаваемые вопросы</h3>
                         <div class="accordion-item">
@@ -145,7 +146,7 @@
                     </div>
                 </div>
 
-                <!-- Десктопная форма бронирования -->
+                <!-- Десктопная форма -->
                 <div class="booking-sidebar" id="desktopBooking">
                     <div class="booking-form">
                         <h2>Забронировать</h2>
@@ -157,7 +158,6 @@
                             <input type="date" name="date" required>
                             <input type="number" name="people" id="people-input" placeholder="Количество человек"
                                 min="1" value="1" required>
-                            <input type="hidden" name="csrf_token" id="csrf_token" value="">
                             <button type="submit" class="btn">Забронировать</button>
                             <p class="form-message"></p>
                         </form>
@@ -165,7 +165,7 @@
                 </div>
             </div>
 
-            <!-- Блок похожих экскурсий -->
+            <!-- Похожие туры -->
             <div class="similar-tours">
                 <h2>Вам также может понравиться</h2>
                 <div class="tour-cards" id="similar-tours"></div>
@@ -177,7 +177,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-info">
-                    <h3>Натали Гид</h3>
+                    <h3>Анна Гид</h3>
                     <p>Индивидуальные и групповые экскурсии по городу</p>
                 </div>
 
@@ -191,37 +191,36 @@
                 <div class="footer-social">
                     <h4>Соцсети</h4>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-telegram"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="VK"><i class="fab fa-vk"></i></a>
                     </div>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>© 2026 Натали Гид. Все права защищены.</p>
+                <p>© 2026 Анна Гид. Все права защищены.</p>
             </div>
         </div>
     </footer>
 
     <script type="module" src="js/main.js"></script>
     <script>
-        // Динамическое обновление SEO-тегов на основе данных экскурсии
+        // Обновление SEO тегов на основе данных
         document.addEventListener('DOMContentLoaded', function () {
-            // Эти данные будут заполняться из toursData
-            const tourTitle = document.getElementById('tour-title')?.textContent || 'Экскурсия';
-            const tourDesc = document.querySelector('.tour-description p')?.textContent || 'Экскурсия по Санкт-Петербургу';
-            const tourImage = document.getElementById('main-image-desktop')?.src || '';
+            setTimeout(function () {
+                const title = document.getElementById('tour-title')?.textContent;
+                if (title) {
+                    document.title = title + ' | Анна Гид';
+                    document.getElementById('seo-title').textContent = title;
 
-            // Обновляем теги
-            document.title = tourTitle + ' | Анна Гид';
-            document.getElementById('seo-description')?.setAttribute('content', tourDesc.substring(0, 160));
-            document.getElementById('og-title')?.setAttribute('content', tourTitle);
-            document.getElementById('og-description')?.setAttribute('content', tourDesc.substring(0, 160));
-            if (tourImage) {
-                document.getElementById('og-image')?.setAttribute('content', tourImage);
-            }
+                    const metaDesc = document.querySelector('meta[name="description"]');
+                    if (metaDesc) {
+                        metaDesc.setAttribute('content', title + ' - индивидуальная экскурсия по Санкт-Петербургу с гидом Анной');
+                    }
+                }
+            }, 100);
         });
     </script>
 </body>
