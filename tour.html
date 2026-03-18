@@ -2,9 +2,25 @@
 <html lang="ru">
 
 <head>
+
+
+
+    <!-- ОСНОВНЫЕ SEO ТЕГИ (динамические) -->
+    <title id="seo-title">Экскурсия | Анна Гид</title>
+    <meta name="description" id="seo-description" content="Экскурсия по Санкт-Петербургу с гидом Анной">
+    <meta name="keywords" content="экскурсия, гид, Санкт-Петербург">
+
+    <!-- OPEN GRAPH (динамические) -->
+    <meta property="og:title" id="og-title" content="Экскурсия">
+    <meta property="og:description" id="og-description" content="Экскурсия по Санкт-Петербургу">
+    <meta property="og:image" id="og-image" content="">
+    <meta property="og:url" content="https://ваш-сайт.netlify.app/tour.html">
+
+    <!-- CANONICAL (динамический) -->
+    <link rel="canonical" id="canonical" href="https://ваш-сайт.netlify.app/tour.html">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Экскурсия - Анна Гид</title>
+
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
         rel="stylesheet">
@@ -15,7 +31,7 @@
 <body>
     <header class="header" id="header">
         <div class="container">
-            <a href="index.html" class="logo">Анна Гид</a>
+            <a href="index.html" class="logo">Натали Гид</a>
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <span></span>
                 <span></span>
@@ -79,9 +95,6 @@
                             <input type="number" name="people" id="people-input-mobile" placeholder="Количество человек"
                                 min="1" value="1" required>
                             <input type="hidden" name="csrf_token" id="csrf_token_mobile" value="">
-                            <div class="total-price">
-                                Итого: <span id="total-mobile">0</span> ₽
-                            </div>
                             <button type="submit" class="btn">Забронировать</button>
                             <p class="form-message"></p>
                         </form>
@@ -94,19 +107,19 @@
                 <div class="tour-details">
                     <div class="tour-meta" id="tour-meta"></div>
 
+                    <!-- Табы (убрали вкладку "Маршрут") -->
                     <div class="tabs">
                         <div class="tab-buttons">
                             <button class="tab-button active" data-tab="description">Описание</button>
                             <button class="tab-button" data-tab="tariffs">Тарифы</button>
-                            <button class="tab-button" data-tab="route">Маршрут</button>
                             <button class="tab-button" data-tab="reviews">Отзывы</button>
                         </div>
                         <div class="tab-content active" id="description"></div>
                         <div class="tab-content" id="tariffs"></div>
-                        <div class="tab-content" id="route"></div>
                         <div class="tab-content" id="reviews"></div>
                     </div>
 
+                    <!-- FAQ (аккордеон) -->
                     <div class="faq">
                         <h3>Часто задаваемые вопросы</h3>
                         <div class="accordion-item">
@@ -145,9 +158,6 @@
                             <input type="number" name="people" id="people-input" placeholder="Количество человек"
                                 min="1" value="1" required>
                             <input type="hidden" name="csrf_token" id="csrf_token" value="">
-                            <div class="total-price">
-                                Итого: <span id="total">0</span> ₽
-                            </div>
                             <button type="submit" class="btn">Забронировать</button>
                             <p class="form-message"></p>
                         </form>
@@ -155,6 +165,7 @@
                 </div>
             </div>
 
+            <!-- Блок похожих экскурсий -->
             <div class="similar-tours">
                 <h2>Вам также может понравиться</h2>
                 <div class="tour-cards" id="similar-tours"></div>
@@ -166,7 +177,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-info">
-                    <h3>Анна Гид</h3>
+                    <h3>Натали Гид</h3>
                     <p>Индивидуальные и групповые экскурсии по городу</p>
                 </div>
 
@@ -189,12 +200,30 @@
             </div>
 
             <div class="footer-bottom">
-                <p>© 2026 Анна Гид. Все права защищены.</p>
+                <p>© 2026 Натали Гид. Все права защищены.</p>
             </div>
         </div>
     </footer>
 
     <script type="module" src="js/main.js"></script>
+    <script>
+        // Динамическое обновление SEO-тегов на основе данных экскурсии
+        document.addEventListener('DOMContentLoaded', function () {
+            // Эти данные будут заполняться из toursData
+            const tourTitle = document.getElementById('tour-title')?.textContent || 'Экскурсия';
+            const tourDesc = document.querySelector('.tour-description p')?.textContent || 'Экскурсия по Санкт-Петербургу';
+            const tourImage = document.getElementById('main-image-desktop')?.src || '';
+
+            // Обновляем теги
+            document.title = tourTitle + ' | Анна Гид';
+            document.getElementById('seo-description')?.setAttribute('content', tourDesc.substring(0, 160));
+            document.getElementById('og-title')?.setAttribute('content', tourTitle);
+            document.getElementById('og-description')?.setAttribute('content', tourDesc.substring(0, 160));
+            if (tourImage) {
+                document.getElementById('og-image')?.setAttribute('content', tourImage);
+            }
+        });
+    </script>
 </body>
 
 </html>

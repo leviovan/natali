@@ -1,4 +1,5 @@
 /* Импорты ДО основных стилей */
+@charset "UTF-8";
 @import 'utils/variables.css';
 @import 'utils/animations.css';
 @import 'utils/responsive.css';

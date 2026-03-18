@@ -22,7 +22,7 @@ export class TourPage {
         this.initMobileBooking();
         this.initTabs();
         this.initAccordion();
-        this.initPriceCalculator();
+        this.initPriceCalculator(); // Теперь вызывается после заполнения информации
         this.renderSimilarTours();
     }
     
@@ -77,12 +77,7 @@ export class TourPage {
             
             this.initTariffHandlers();
         }
-        
-        document.getElementById('route').innerHTML = `
-            <ul>${this.tour.routeItems.map(item => `<li>${item}</li>`).join('')}</ul>
-            <div class="map">${this.tour.mapIframe}</div>
-        `;
-        
+                
         document.getElementById('reviews').innerHTML = this.tour.reviews.map(r => `
             <div class="review-item">
                 <p>«${r.text}»</p>
@@ -128,7 +123,6 @@ export class TourPage {
         
         if (!this.tour.images.length || !wrapper) return;
         
-        // Создаем слайды
         wrapper.innerHTML = this.tour.images.map(img => `
             <div class="mobile-slider-slide">
                 <img src="${img}" alt="${this.tour.title}">
@@ -141,7 +135,6 @@ export class TourPage {
         const updateSlider = () => {
             wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
             
-            // Обновляем точки
             if (dotsContainer) {
                 const dots = dotsContainer.querySelectorAll('.mobile-slider-dot');
                 dots.forEach((dot, i) => {
@@ -150,7 +143,6 @@ export class TourPage {
             }
         };
         
-        // Создаем точки
         if (dotsContainer) {
             dotsContainer.innerHTML = this.tour.images.map((_, i) => `
                 <span class="mobile-slider-dot ${i === 0 ? 'active' : ''}" data-index="${i}"></span>
@@ -164,7 +156,6 @@ export class TourPage {
             });
         }
         
-        // Кнопки навигации
         if (prevBtn) {
             prevBtn.addEventListener('click', () => {
                 currentIndex = (currentIndex - 1 + this.tour.images.length) % this.tour.images.length;
@@ -179,24 +170,19 @@ export class TourPage {
             });
         }
         
-        // Свайпы для мобильных
         let touchStartX = 0;
-        let touchEndX = 0;
-        
         wrapper.addEventListener('touchstart', (e) => {
             touchStartX = e.changedTouches[0].screenX;
         });
         
         wrapper.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
+            const touchEndX = e.changedTouches[0].screenX;
             const diff = touchStartX - touchEndX;
             
             if (Math.abs(diff) > 50) {
                 if (diff > 0) {
-                    // Свайп влево
                     currentIndex = (currentIndex + 1) % this.tour.images.length;
                 } else {
-                    // Свайп вправо
                     currentIndex = (currentIndex - 1 + this.tour.images.length) % this.tour.images.length;
                 }
                 updateSlider();
@@ -204,45 +190,43 @@ export class TourPage {
         });
     }
     
-initMobileBooking() {
-    const mobileBtn = document.getElementById('mobileBookingBtn');
-    const modal = document.getElementById('bookingModal');
-    const closeBtn = document.getElementById('closeModalBtn');
-    
-    if (!mobileBtn || !modal) return;
-    
-    mobileBtn.addEventListener('click', () => {
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        // Добавляем класс для body, чтобы можно было стилизовать при открытой модалке
-        document.body.classList.add('modal-open');
-    });
-    
-    if (closeBtn) {
-        closeBtn.addEventListener('click', () => {
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
-            document.body.classList.remove('modal-open');
+    initMobileBooking() {
+        const mobileBtn = document.getElementById('mobileBookingBtn');
+        const modal = document.getElementById('bookingModal');
+        const closeBtn = document.getElementById('closeModalBtn');
+        
+        if (!mobileBtn || !modal) return;
+        
+        mobileBtn.addEventListener('click', () => {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            document.body.classList.add('modal-open');
+        });
+        
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+                document.body.classList.remove('modal-open');
+            });
+        }
+        
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+                document.body.classList.remove('modal-open');
+            }
+        });
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+                document.body.classList.remove('modal-open');
+            }
         });
     }
-    
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
-            document.body.classList.remove('modal-open');
-        }
-    });
-    
-    // Закрытие по ESC
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('active')) {
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
-            document.body.classList.remove('modal-open');
-        }
-    });
-}
     
     initTariffHandlers() {
         document.querySelectorAll('.choose-tariff').forEach(btn => {
@@ -251,53 +235,15 @@ initMobileBooking() {
                 const tariffName = btn.dataset.tariff;
                 const tariffPrice = parseInt(btn.dataset.price);
                 
-                // Обновляем цену в обеих формах
-                const priceSpan = document.querySelector('#tour-price span');
-                const priceSpanMobile = document.querySelector('#tour-price-mobile span');
-                if (priceSpan) {
-                    priceSpan.textContent = `${tariffPrice} ₽ (${tariffName})`;
-                }
-                if (priceSpanMobile) {
-                    priceSpanMobile.textContent = `${tariffPrice} ₽ (${tariffName})`;
-                }
+                this.updatePriceForTariff(tariffPrice, tariffName);
                 
-                this.tour.basePrice = tariffPrice;
-                this.initPriceCalculator();
-                
-                // Подсветка карточки
                 document.querySelectorAll('.tariff-card').forEach(card => {
                     card.classList.remove('selected-tariff');
                 });
                 btn.closest('.tariff-card').classList.add('selected-tariff');
-                
-                // Индикатор в формах
-                const indicator = document.querySelector('.selected-tariff-indicator');
-                const indicatorMobile = document.querySelector('#tour-form-mobile .selected-tariff-indicator');
-                
-                [indicator, indicatorMobile].forEach(el => {
-                    if (el) el.remove();
-                });
-                
-                const createIndicator = (form) => {
-                    const div = document.createElement('div');
-                    div.className = 'selected-tariff-indicator';
-                    div.innerHTML = `Выбран тариф: <strong>${tariffName}</strong> (${tariffPrice} ₽)`;
-                    return div;
-                };
-                
-                const desktopForm = document.querySelector('#tour-form');
-                const mobileForm = document.querySelector('#tour-form-mobile');
-                
-                if (desktopForm) {
-                    desktopForm.insertBefore(createIndicator(desktopForm), desktopForm.querySelector('button'));
-                }
-                if (mobileForm) {
-                    mobileForm.insertBefore(createIndicator(mobileForm), mobileForm.querySelector('button'));
-                }
             });
         });
         
-        // Клик на карточку тарифа
         document.querySelectorAll('.tariff-card').forEach(card => {
             card.addEventListener('click', (e) => {
                 if (!e.target.classList.contains('choose-tariff') && !e.target.closest('.choose-tariff')) {
@@ -342,25 +288,306 @@ initMobileBooking() {
         });
     }
     
-    initPriceCalculator() {
+    // ========== НОВЫЙ КАЛЬКУЛЯТОР ==========
+initPriceCalculator() {
+    const peopleInput = document.getElementById('people-input');
+    const peopleInputMobile = document.getElementById('people-input-mobile');
+    
+    if (!peopleInput) return;
+    
+    // Максимальное количество человек из данных тура (для информации)
+    const maxPeople = this.tour.maxPeople;
+    
+    // Функция проверки количества
+    const checkPeopleCount = (input, isMobile = false) => {
+        let count = parseInt(input.value) || 1;
+        
+        // Проверка на минимальное количество
+        if (count < 1) {
+            count = 1;
+            input.value = 1;
+        }
+        
+        // Проверяем, превышено ли стандартное количество
+        this.checkPeopleCount(count, maxPeople, isMobile);
+    };
+    
+    // Добавляем обработчики для десктопной формы
+    if (peopleInput) {
+        peopleInput.addEventListener('input', () => checkPeopleCount(peopleInput, false));
+        peopleInput.addEventListener('change', () => checkPeopleCount(peopleInput, false));
+        
+        // Запускаем сразу при загрузке
+        checkPeopleCount(peopleInput, false);
+    }
+    
+    // Добавляем обработчики для мобильной формы
+    if (peopleInputMobile) {
+        peopleInputMobile.addEventListener('input', () => checkPeopleCount(peopleInputMobile, true));
+        peopleInputMobile.addEventListener('change', () => checkPeopleCount(peopleInputMobile, true));
+        
+        // Запускаем сразу при загрузке
+        checkPeopleCount(peopleInputMobile, true);
+    }
+}
+
+// Метод для проверки количества человек
+checkPeopleCount(count, maxPeople, isMobile = false) {
+    const form = isMobile ? 
+        document.getElementById('tour-form-mobile') : 
+        document.getElementById('tour-form');
+    
+    if (!form) return;
+    
+    // Удаляем старое предупреждение, если есть
+    const oldWarning = form.querySelector('.people-warning');
+    if (oldWarning) oldWarning.remove();
+    
+    // Если количество превышает стандартное, показываем предупреждение
+    if (count > maxPeople) {
+        const warning = document.createElement('div');
+        warning.className = 'people-warning';
+        warning.innerHTML = `
+            <i class="fas fa-info-circle"></i>
+            <div>
+                <strong>Внимание!</strong> Вы выбрали ${count} человек. 
+                Стандартная группа рассчитана на ${maxPeople} чел. 
+                Цена может отличаться. Уточните при бронировании.
+            </div>
+        `;
+        
+        // Вставляем перед кнопкой отправки
+        const submitBtn = form.querySelector('button[type="submit"]');
+        if (submitBtn) {
+            form.insertBefore(warning, submitBtn);
+        }
+    }
+}
+
+// Обновляем метод updatePriceForTariff
+updatePriceForTariff(price, tariffName) {
+    // Обновляем отображаемую цену
+    const priceSpan = document.querySelector('#tour-price span');
+    const priceSpanMobile = document.querySelector('#tour-price-mobile span');
+    
+    if (priceSpan) {
+        priceSpan.textContent = `${price} ₽ (${tariffName})`;
+    }
+    if (priceSpanMobile) {
+        priceSpanMobile.textContent = `${price} ₽ (${tariffName})`;
+    }
+    
+    // Обновляем базовую цену
+    this.tour.basePrice = price;
+    
+    // Проверяем количество человек при смене тарифа
+    const peopleInput = document.getElementById('people-input');
+    const peopleInputMobile = document.getElementById('people-input-mobile');
+    
+    if (peopleInput) {
+        const count = parseInt(peopleInput.value) || 1;
+        this.checkPeopleCount(count, this.tour.maxPeople, false);
+    }
+    
+    if (peopleInputMobile) {
+        const count = parseInt(peopleInputMobile.value) || 1;
+        this.checkPeopleCount(count, this.tour.maxPeople, true);
+    }
+    
+    // Удаляем старые индикаторы
+    [document.getElementById('tour-form'), document.getElementById('tour-form-mobile')].forEach(form => {
+        if (form) {
+            const oldIndicator = form.querySelector('.selected-tariff-indicator');
+            if (oldIndicator) oldIndicator.remove();
+        }
+    });
+    
+    // Добавляем метку о выбранном тарифе
+    const createIndicator = (form) => {
+        const div = document.createElement('div');
+        div.className = 'selected-tariff-indicator';
+        div.innerHTML = `Выбран тариф: <strong>${tariffName}</strong> (${price} ₽)`;
+        return div;
+    };
+    
+    const desktopForm = document.getElementById('tour-form');
+    const mobileForm = document.getElementById('tour-form-mobile');
+    
+    if (desktopForm) {
+        desktopForm.insertBefore(createIndicator(desktopForm), desktopForm.querySelector('button'));
+    }
+    
+    if (mobileForm) {
+        mobileForm.insertBefore(createIndicator(mobileForm), mobileForm.querySelector('button'));
+    }
+}
+
+// Обновляем метод updatePriceForTariff
+updatePriceForTariff(price, tariffName) {
+    // Обновляем отображаемую цену
+    const priceSpan = document.querySelector('#tour-price span');
+    const priceSpanMobile = document.querySelector('#tour-price-mobile span');
+    
+    if (priceSpan) {
+        priceSpan.textContent = `${price} ₽ (${tariffName})`;
+    }
+    if (priceSpanMobile) {
+        priceSpanMobile.textContent = `${price} ₽ (${tariffName})`;
+    }
+    
+    // Обновляем базовую цену для калькулятора
+    this.tour.basePrice = price;
+    
+    // Обновляем отображение фиксировНатали цены (не зависит от количества)
+    const totalSpan = document.getElementById('total');
+    const totalSpanMobile = document.getElementById('total-mobile');
+    
+    if (totalSpan) {
+        totalSpan.textContent = price;
+    }
+    
+    if (totalSpanMobile) {
+        totalSpanMobile.textContent = price;
+    }
+    
+    // Проверяем количество человек (без изменения цены)
+    const peopleInput = document.getElementById('people-input');
+    const peopleInputMobile = document.getElementById('people-input-mobile');
+    
+    if (peopleInput) {
+        const count = parseInt(peopleInput.value) || 1;
+        this.checkPeopleCount(count, this.tour.maxPeople, false);
+    }
+    
+    if (peopleInputMobile) {
+        const count = parseInt(peopleInputMobile.value) || 1;
+        this.checkPeopleCount(count, this.tour.maxPeople, true);
+    }
+    
+    // Удаляем старые индикаторы
+    [document.getElementById('tour-form'), document.getElementById('tour-form-mobile')].forEach(form => {
+        if (form) {
+            const oldIndicator = form.querySelector('.selected-tariff-indicator');
+            if (oldIndicator) oldIndicator.remove();
+        }
+    });
+    
+    // Добавляем метку о выбранном тарифе в форму
+    const createIndicator = (form) => {
+        const div = document.createElement('div');
+        div.className = 'selected-tariff-indicator';
+        div.innerHTML = `Выбран тариф: <strong>${tariffName}</strong> (${price} ₽)`;
+        return div;
+    };
+    
+    const desktopForm = document.getElementById('tour-form');
+    const mobileForm = document.getElementById('tour-form-mobile');
+    
+    if (desktopForm) {
+        desktopForm.insertBefore(createIndicator(desktopForm), desktopForm.querySelector('button'));
+    }
+    
+    if (mobileForm) {
+        mobileForm.insertBefore(createIndicator(mobileForm), mobileForm.querySelector('button'));
+    }
+}
+    
+    // Метод для проверки количества человек
+    checkPeopleCount(count, maxPeople, isMobile = false) {
+        const form = isMobile ? 
+            document.getElementById('tour-form-mobile') : 
+            document.getElementById('tour-form');
+        
+        if (!form) return;
+        
+        // Удаляем старое предупреждение, если есть
+        const oldWarning = form.querySelector('.people-warning');
+        if (oldWarning) oldWarning.remove();
+        
+        // Если количество превышает стандартное, показываем предупреждение
+        if (count > maxPeople) {
+            const warning = document.createElement('div');
+            warning.className = 'people-warning';
+            warning.innerHTML = `
+                <i class="fas fa-info-circle"></i>
+                <div>
+                    <strong>Внимание!</strong> Вы выбрали ${count} человек. 
+                    Стандартная группа рассчитана на ${maxPeople} чел. 
+                    Цена может отличаться. Уточните при бронировании.
+                </div>
+            `;
+            
+            // Вставляем после поля с количеством людей или перед кнопкой
+            const totalDiv = form.querySelector('.total-price');
+            if (totalDiv) {
+                totalDiv.parentNode.insertBefore(warning, totalDiv.nextSibling);
+            } else {
+                const submitBtn = form.querySelector('button[type="submit"]');
+                if (submitBtn) {
+                    form.insertBefore(warning, submitBtn);
+                }
+            }
+        }
+    }
+    
+    updatePriceForTariff(price, tariffName) {
+        // Обновляем отображаемую цену
+        const priceSpan = document.querySelector('#tour-price span');
+        const priceSpanMobile = document.querySelector('#tour-price-mobile span');
+        
+        if (priceSpan) {
+            priceSpan.textContent = `${price} ₽ (${tariffName})`;
+        }
+        if (priceSpanMobile) {
+            priceSpanMobile.textContent = `${price} ₽ (${tariffName})`;
+        }
+        
+        // Обновляем базовую цену для калькулятора
+        this.tour.basePrice = price;
+        
+        // Обновляем калькулятор для пересчёта суммы
         const peopleInput = document.getElementById('people-input');
         const peopleInputMobile = document.getElementById('people-input-mobile');
         const totalSpan = document.getElementById('total');
         const totalSpanMobile = document.getElementById('total-mobile');
         
-        const updateTotal = (input, span) => {
-            const count = parseInt(input.value) || 1;
-            span.textContent = this.tour.basePrice * count;
-        };
-        
         if (peopleInput && totalSpan) {
-            peopleInput.addEventListener('input', () => updateTotal(peopleInput, totalSpan));
-            updateTotal(peopleInput, totalSpan);
+            const count = parseInt(peopleInput.value) || 1;
+            totalSpan.textContent = price
+            this.checkPeopleCount(count, this.tour.maxPeople, false);
         }
         
         if (peopleInputMobile && totalSpanMobile) {
-            peopleInputMobile.addEventListener('input', () => updateTotal(peopleInputMobile, totalSpanMobile));
-            updateTotal(peopleInputMobile, totalSpanMobile);
+            const count = parseInt(peopleInputMobile.value) || 1;
+            totalSpanMobile.textContent = price
+            this.checkPeopleCount(count, this.tour.maxPeople, true);
+        }
+        
+        // Удаляем старые индикаторы
+        [document.getElementById('tour-form'), document.getElementById('tour-form-mobile')].forEach(form => {
+            if (form) {
+                const oldIndicator = form.querySelector('.selected-tariff-indicator');
+                if (oldIndicator) oldIndicator.remove();
+            }
+        });
+        
+        // Добавляем метку о выбранном тарифе в форму
+        const createIndicator = (form) => {
+            const div = document.createElement('div');
+            div.className = 'selected-tariff-indicator';
+            div.innerHTML = `Выбран тариф: <strong>${tariffName}</strong> (${price} ₽)`;
+            return div;
+        };
+        
+        const desktopForm = document.getElementById('tour-form');
+        const mobileForm = document.getElementById('tour-form-mobile');
+        
+        if (desktopForm) {
+            desktopForm.insertBefore(createIndicator(desktopForm), desktopForm.querySelector('button'));
+        }
+        
+        if (mobileForm) {
+            mobileForm.insertBefore(createIndicator(mobileForm), mobileForm.querySelector('button'));
         }
     }
     

@@ -1,0 +1,53 @@
+/* Только для первого экрана (header + hero) */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(26, 38, 52, 0.95);
+    z-index: 1000;
+    padding: 0.8rem 0;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 1.5rem;
+}
+
+.hero {
+    min-height: calc(100vh - 70px);
+    background: linear-gradient(135deg, #1a2634 0%, #2c3e50 100%);
+    display: flex;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    color: white;
+    font-family: 'Playfair Display', serif;
+}
+
+.hero-btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+    border-radius: 50px;
+    color: white;
+    text-decoration: none;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}

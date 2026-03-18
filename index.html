@@ -4,18 +4,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Экскурсии с Анной</title>
+
+    <!-- ОСНОВНЫЕ SEO ТЕГИ -->
+    <title>Экскурсии по Санкт-Петербургу с гидом Анной | Индивидуальные и групповые</title>
+    <meta name="description"
+        content="Индивидуальные и групповые экскурсии по Санкт-Петербургу с профессиональным гидом Анной. Исторический центр, мистические места, водные прогулки. Более 5 лет опыта, 500+ довольных туристов.">
+    <meta name="keywords"
+        content="экскурсии Санкт-Петербург, гид по Петербургу, индивидуальные экскурсии, групповые экскурсии, обзорные экскурсии, мистический Петербург, водные прогулки">
+    <meta name="author" content="Анна Гид">
+    <meta name="robots" content="index, follow">
+
+    <!-- OPEN GRAPH (для соцсетей) -->
+    <meta property="og:title" content="Экскурсии по Санкт-Петербургу с гидом Анной">
+    <meta property="og:description"
+        content="Индивидуальные и групповые экскурсии по Петербургу. Исторический центр, мистические места, водные прогулки.">
+    <meta property="og:image" content="https://ваш-сайт.netlify.app/images/og-preview.jpg">
+    <meta property="og:url" content="https://ваш-сайт.netlify.app">
+    <meta property="og:type" content="website">
+
+    <!-- CANONICAL (главная страница) -->
+    <link rel="canonical" href="https://ваш-сайт.netlify.app/">
+
+    <!-- HREFLANG (языковые версии) -->
+    <link rel="alternate" hreflang="ru" href="https://ваш-сайт.netlify.app/">
+
+    <!-- ФАВИКОНКИ -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Шрифты (оптимизировано) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
         rel="stylesheet">
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Наши стили -->
     <link rel="stylesheet" href="css/main.css">
+
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Структурированные данные (JSON-LD) -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Экскурсии с Анной",
+            "description": "Индивидуальные и групповые экскурсии по Санкт-Петербургу",
+            "url": "https://ваш-сайт.netlify.app",
+            "telephone": "+7-123-456-78-90",
+            "email": "anna@example.com",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Санкт-Петербург",
+                "addressCountry": "RU"
+            },
+            "priceRange": "от 2800₽",
+            "openingHours": "Mo-Su 09:00-21:00",
+            "sameAs": [
+                "https://t.me/anna_guide",
+                "https://vk.com/anna_guide",
+                "https://instagram.com/anna_guide"
+            ],
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "5",
+                "reviewCount": "50"
+            }
+        }
+        </script>
 </head>
 
 <body>
     <header class="header" id="header">
         <div class="container">
-            <a href="index.html" class="logo">Анна Гид</a>
+            <a href="index.html" class="logo">Натали Гид</a>
 
             <!-- Кнопка мобильного меню -->
             <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -40,7 +107,7 @@
             <div class="hero-content">
                 <div class="hero-badge">Топ-гид 2025</div>
                 <h1>Откройте <span>город</span> по-новому</h1>
-                <p>Индивидуальные и групповые экскурсии с профессиональным гидом Анной</p>
+                <p>Индивидуальные и групповые экскурсии с профессиональным гидом Натали</p>
 
                 <div class="hero-stats">
                     <div class="stat-item">
@@ -64,7 +131,7 @@
             </div>
 
             <div class="hero-image">
-                <img src="/assets/img/hero.jpg" alt="Анна гид">
+                <img src="/assets/img/hero.webp" alt="Натали гид">
             </div>
         </div>
     </section>
@@ -72,14 +139,15 @@
     <section id="about" class="about">
         <div class="container">
             <div class="about-image">
-                <img src="/assets/img/hero-on-walk.jpg" alt="Анна на экскурсии">
+                <img src="/assets/img/hero-on-walk.webp" alt="Натали на экскурсии">
             </div>
 
             <div class="about-content">
                 <div class="about-subtitle">Обо мне</div>
-                <h2>Привет, я <span>Анна</span></h2>
-                <p>Я профессиональный гид с 5-летним опытом. Проведу вас по самым живописным уголкам, расскажу истории,
-                    которые не найти в путеводителях, и покажу город глазами местного жителя.</p>
+                <h2>Привет, я <span>Натали</span></h2>
+                <p>Я - Николаенко Наталья, профессиональный и лицензированный экскурсовод по Санкт-Петербургу и
+                    Ленинградской области.
+                    Экскурсовод с высшим историческим образованием, историк, преподаватель истории.</p>
 
                 <div class="about-features">
                     <div class="feature">
@@ -112,12 +180,7 @@
                     </div>
                 </div>
 
-                <div class="about-signature">
-                    <img src="https://via.placeholder.com/150x50?text=Анна" alt="Подпись">
-                    <span>Ваш гид, Анна</span>
-                </div>
             </div>
-        </div>
     </section>
 
     <!-- Tours секция -->
@@ -141,11 +204,11 @@
             <h2>Отзывы</h2>
             <div class="review-list">
                 <div class="review">
-                    <p>«Анна – лучший гид! Было очень интересно, узнали много нового. Обязательно вернёмся!»</p>
+                    <p>«Натали – лучший гид! Было очень интересно, узнали много нового. Обязательно вернёмся!»</p>
                     <cite>— Екатерина</cite>
                 </div>
                 <div class="review">
-                    <p>«Экскурсия с Анной оставила незабываемые впечатления. Очень душевно и познавательно.»</p>
+                    <p>«Экскурсия с Натали оставила незабываемые впечатления. Очень душевно и познавательно.»</p>
                     <cite>— Дмитрий</cite>
                 </div>
             </div>
@@ -173,30 +236,32 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-info">
-                    <h3>Анна Гид</h3>
+                    <h3>Натали Гид</h3>
                     <p>Индивидуальные и групповые экскурсии по городу</p>
                 </div>
 
                 <div class="footer-contacts">
                     <h4>Контакты</h4>
-                    <p><i class="fas fa-phone"></i> +7 (123) 456-78-90</p>
-                    <p><i class="fas fa-envelope"></i> anna@example.com</p>
+                    <p><i class="fas fa-phone"></i> +7 (906) 271-08-45 </p>
+                    <p><i class="fas fa-envelope"></i> nikolaenko1311@mail.ru</p>
                     <p><i class="fas fa-map-marker-alt"></i> г. Санкт-Петербург</p>
                 </div>
 
                 <div class="footer-social">
                     <h4>Соцсети</h4>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-telegram"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="https://t.me/nikolaenkonatalia_guidespb" target="_blank"><i
+                                class="fab fa-telegram"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/reel/DVnUMvhDNlo/?igsh=MXN3NDJjZnQ0bjNwcg=="
+                            target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://vk.ru/wall-207824461_157" target="_blank"><i class="fab fa-vk"></i></a>
                     </div>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>© 2026 Анна Гид. Все права защищены.</p>
+                <p>© 2026 Натали Гид. Все права защищены.</p>
             </div>
         </div>
     </footer>

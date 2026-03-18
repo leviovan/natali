@@ -57,7 +57,7 @@
 
 .accordion-content.show {
     max-height: 200px;
-    padding: 1rem 1.2rem;
+    padding: 1rem 1.2rem 2rem;
 }
 
 /* Адаптив */
@@ -76,7 +76,7 @@
     }
     
     .accordion-content.show {
-        padding: 0.8rem 1rem;
+        padding: 0.8rem 1rem 1.6rem;
         max-height: 250px;
     }
 }

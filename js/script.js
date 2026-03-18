@@ -22,7 +22,7 @@ const toursData = [
         ],
         mapIframe: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d..." width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>',
         reviews: [
-            { text: "Очень познавательная экскурсия, Анна прекрасный рассказчик! Узнали много нового о городе.", author: "Иван", date: "июнь 2025" },
+            { text: "Очень познавательная экскурсия, Натали прекрасный рассказчик! Узнали много нового о городе.", author: "Иван", date: "июнь 2025" },
             { text: "Формат прогулки отличный, время пролетело незаметно. Рекомендую!", author: "Ольга", date: "май 2025" }
         ],
         images: [
@@ -45,7 +45,7 @@ const toursData = [
             "🌳 Центральный парк",
             "🏛️ Усадьба графа N",
             "🌲 Ботанический сад",
-            "⛲ Фонтанная площадь"
+            "⛲ ФонтНаталия площадь"
         ],
         mapIframe: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d..." width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>',
         reviews: [
@@ -172,7 +172,7 @@ const toursData = [
         ],
         mapIframe: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d..." width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>',
         reviews: [
-            { text: "Фото получились шикарные! Анна знает все секретные места.", author: "Ксения", date: "ноябрь 2024" }
+            { text: "Фото получились шикарные! Натали знает все секретные места.", author: "Ксения", date: "ноябрь 2024" }
         ],
         images: [
             "https://via.placeholder.com/800x500?text=Фотопрогулка+1",
@@ -349,11 +349,7 @@ function loadTourData() {
     // Описание
     document.getElementById('description').innerHTML = tour.description;
 
-    // Маршрут
-    document.getElementById('route').innerHTML = `
-        <ul>${tour.routeItems.map(item => `<li>${item}</li>`).join('')}</ul>
-        <div class="map">${tour.mapIframe}</div>
-    `;
+
 
     // Отзывы
     document.getElementById('reviews').innerHTML = tour.reviews.map(r => `
