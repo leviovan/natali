@@ -1,7 +1,7 @@
 {
   "name": "excursions-site",
   "version": "1.0.0",
-  "description": "Сайт экскурсий с Анной",
+  "description": "Сайт экскурсий с Натали",
   "dependencies": {
     "node-fetch": "^3.3.2"
   },

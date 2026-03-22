@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- SEO теги (будут обновлены скриптом) -->
-    <title id="seo-title">Экскурсия | Анна Гид</title>
-    <meta name="description" id="seo-description" content="Индивидуальная экскурсия по Санкт-Петербургу с гидом Анной">
+    <title id="seo-title">Экскурсия | Натали Гид</title>
+    <meta name="description" id="seo-description" content="Индивидуальная экскурсия по Санкт-Петербургу с гидом Натали">
 
     <!-- Open Graph -->
     <meta property="og:title" id="og-title" content="Экскурсия">
@@ -35,7 +35,7 @@
 <body>
     <header class="header" id="header">
         <div class="container">
-            <a href="index.html" class="logo">Анна Гид</a>
+            <a href="index.html" class="logo">Натали Гид</a>
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <span></span>
                 <span></span>
@@ -177,7 +177,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-info">
-                    <h3>Анна Гид</h3>
+                    <h3>Натали Гид</h3>
                     <p>Индивидуальные и групповые экскурсии по городу</p>
                 </div>
 
@@ -200,7 +200,7 @@
             </div>
 
             <div class="footer-bottom">
-                <p>© 2026 Анна Гид. Все права защищены.</p>
+                <p>© 2026 Натали Гид. Все права защищены.</p>
             </div>
         </div>
     </footer>
@@ -212,12 +212,12 @@
             setTimeout(function () {
                 const title = document.getElementById('tour-title')?.textContent;
                 if (title) {
-                    document.title = title + ' | Анна Гид';
+                    document.title = title + ' | Натали Гид';
                     document.getElementById('seo-title').textContent = title;
 
                     const metaDesc = document.querySelector('meta[name="description"]');
                     if (metaDesc) {
-                        metaDesc.setAttribute('content', title + ' - индивидуальная экскурсия по Санкт-Петербургу с гидом Анной');
+                        metaDesc.setAttribute('content', title + ' - индивидуальная экскурсия по Санкт-Петербургу с гидом Натали');
                     }
                 }
             }, 100);
