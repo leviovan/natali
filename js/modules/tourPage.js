@@ -35,11 +35,11 @@ export class TourPage {
         if (tourNameHidden) tourNameHidden.value = this.tour.title;
         if (tourNameHiddenMobile) tourNameHiddenMobile.value = this.tour.title;
         
-        document.getElementById('tour-meta').innerHTML = `
+         document.getElementById('tour-meta').innerHTML = `
             <span><i class="fas fa-clock"></i> ${this.tour.durationText}</span>
             <span><i class="fas fa-signal"></i> ${this.tour.difficulty}</span>
-            <span><i class="fas fa-users"></i> До ${this.tour.maxPeople} чел.</span>
-            <span><i class="fas fa-tag"></i> ${this.tour.basePrice}₽</span>
+            <span><i class="fas fa-users"></i> 1-${this.tour.maxPeople} чел.</span>
+            <span><i class="fas fa-tag"></i>От ${this.tour.basePrice}₽</span>
         `;
         
         // Цены в формах
@@ -83,7 +83,7 @@ export class TourPage {
                 <p>«${r.text}»</p>
                 <cite>— ${r.author}, ${r.date}</cite>
             </div>
-        `).join('') + '<a href="#" class="btn-small">Все отзывы</a>';
+        `).join('') + '<a href="https://t.me/nikolaenkonatalia_guidespb" class="btn-small">Все отзывы</a>';
     }
     
     initDesktopGallery() {
@@ -591,34 +591,34 @@ updatePriceForTariff(price, tariffName) {
         }
     }
     
-    renderSimilarTours() {
-        const container = document.getElementById('similar-tours');
-        if (!container) return;
-        
-        const similarTours = toursData.filter(t => this.tour.similar.includes(t.id));
-        
-        if (similarTours.length === 0) {
-            container.innerHTML = '<p class="no-similar">Нет похожих экскурсий</p>';
-            return;
-        }
-        
-        container.innerHTML = similarTours.map(t => `
-            <div class="tour-card">
-                <div class="tour-card__image">
-                    <img src="${t.images[0]}" alt="${t.title}" loading="lazy">
-                    <div class="tour-card__price-badge">${t.basePrice}₽</div>
-                </div>
-                <div class="tour-card__content">
-                    <h3 class="tour-card__title">${t.title}</h3>
-                    <div class="tour-card__meta">
-                        <span><i class="fas fa-clock"></i> ${t.duration} ч</span>
-                        <span><i class="fas fa-users"></i> до ${t.maxPeople} чел</span>
-                    </div>
-                    <a href="tour.html?id=${t.id}" class="tour-card__btn">
-                        Подробнее <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-        `).join('');
+  renderSimilarTours() {
+    const container = document.getElementById('similar-tours');
+    if (!container) return;
+    
+    const similarTours = toursData.filter(t => this.tour.similar.includes(t.id));
+    
+    if (similarTours.length === 0) {
+        container.innerHTML = '<p class="no-similar">Нет похожих экскурсий</p>';
+        return;
     }
+    
+    container.innerHTML = similarTours.map(t => `
+        <div class="tour-card">
+            <div class="tour-card__image">
+                <img src="${t.images[0]}" alt="${t.title}" loading="lazy">
+                <div class="tour-card__price-badge">${t.basePrice}₽</div>
+            </div>
+            <div class="tour-card__content">
+                <h3 class="tour-card__title">${t.title}</h3>
+                <div class="tour-card__meta">
+                    <span><i class="fas fa-clock"></i> ${t.duration} ч</span>
+                    <span><i class="fas fa-users"></i> 1-${t.maxPeople} чел</span>
+                </div>
+                <a href="tour.html?id=${t.id}" class="tour-card__btn">
+                    Подробнее <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    `).join('');
+}
 }

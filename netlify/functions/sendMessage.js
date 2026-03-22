@@ -17,6 +17,7 @@ export const handler = async (event) => {
 
         // Токен бота и chat_id из переменных окружения
         const token = process.env.TELEGRAM_BOT_TOKEN;
+        console.log(process,token)
         const chatId = process.env.TELEGRAM_CHAT_ID;
 
         if (!token || !chatId) {

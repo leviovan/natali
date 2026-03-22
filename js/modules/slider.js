@@ -36,48 +36,43 @@ export class TourSlider {
         }, 100);
     }
     
-    renderCards() {
-        this.wrapper.innerHTML = toursData.map(tour => `
-            <div class="tour-card" data-id="${tour.id}">
-                <div class="tour-card__image">
-                    <img 
-                        src="${tour.images[0]}" 
-                        alt="${tour.title}" 
-                        loading="lazy"
-                        onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400?text=${encodeURIComponent(tour.title)}';"
-                    >
-                    <div class="tour-card__price-badge">
-                        ${tour.basePrice}₽ <span>за группу</span>
+  renderCards() {
+    this.wrapper.innerHTML = toursData.map(tour => `
+        <div class="tour-card" data-id="${tour.id}">
+            <div class="tour-card__image">
+                <img 
+                    src="${tour.images[0]}" 
+                    alt="${tour.title}" 
+                    loading="lazy"
+                >
+                <div class="tour-card__price-badge">
+                    ${tour.basePrice}₽
+                </div>
+            </div>
+            
+            <div class="tour-card__content">
+                <h3 class="tour-card__title">${tour.title}</h3>
+                <p class="tour-card__description">${tour.shortDescription}</p>
+                
+                <div class="tour-card__meta">
+                    <div class="tour-card__meta-item">
+                        <i class="fas fa-clock"></i>
+                        <span>${tour.duration} ч</span>
+                    </div>
+                    <div class="tour-card__meta-item">
+                        <i class="fas fa-users"></i>
+                        <span>1-${tour.maxPeople} чел</span>
                     </div>
                 </div>
                 
-                <div class="tour-card__content">
-                    <h3 class="tour-card__title">${tour.title}</h3>
-                    <p class="tour-card__description">${tour.shortDescription}</p>
-                    
-                    <div class="tour-card__meta">
-                        <div class="tour-card__meta-item">
-                            <i class="fas fa-clock"></i>
-                            <span>${tour.duration} ч</span>
-                        </div>
-                        <div class="tour-card__meta-item">
-                            <i class="fas fa-users"></i>
-                            <span>до ${tour.maxPeople} чел</span>
-                        </div>
-                        <div class="tour-card__meta-item">
-                            <i class="fas fa-signal"></i>
-                            <span>${tour.difficulty}</span>
-                        </div>
-                    </div>
-                    
-                    <a href="tour.html?id=${tour.id}" class="tour-card__btn">
-                        Подробнее
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
+                <a href="tour.html?id=${tour.id}" class="tour-card__btn">
+                    Подробнее
+                    <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
-        `).join('');
-    }
+        </div>
+    `).join('');
+}
     
     getCardsPerView() {
         const width = window.innerWidth;

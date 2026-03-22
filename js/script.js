@@ -317,7 +317,7 @@ function loadTourData() {
         <span><i class="fas fa-clock"></i> ${tour.duration}</span>
         <span><i class="fas fa-signal"></i> ${tour.difficulty}</span>
         <span><i class="fas fa-users"></i> До ${tour.maxPeople} чел.</span>
-        <span><i class="fas fa-tag"></i> ${tour.basePrice}₽</span>
+        <span><i class="fas fa-tag"></i>От ${tour.basePrice}₽</span>
     `;
 
     // Цена
@@ -357,7 +357,7 @@ function loadTourData() {
             <p>«${r.text}»</p>
             <cite>— ${r.author}, ${r.date}</cite>
         </div>
-    `).join('') + '<a href="#" class="btn-small">Все отзывы</a>';
+    `).join('') + '<a href="https://t.me/nikolaenkonatalia_guidespb" class="btn-small">Все отзывы</a>';
 
     // Похожие экскурсии
     const similarContainer = document.getElementById('similar-tours');
